@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== MATRIX BACKGROUND ===== */
+        /* MATRIX BACKGROUND */
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -30,13 +30,13 @@
             background: #0A0E27;
         }
 
-        /* ===== MAIN CONTAINER ===== */
+        /* MAIN CONTAINER */
         .container {
             position: relative;
             z-index: 1;
             max-width: 1000px;
             width: 100%;
-            background: rgba(10, 14, 39, 0.65);
+            background: rgba(10, 14, 39, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 240, 255, 0.15);
@@ -44,13 +44,12 @@
             padding: 40px 35px;
             max-height: 95vh;
             overflow-y: auto;
-            box-shadow: 0 0 80px rgba(0, 240, 255, 0.03);
         }
 
         .container::-webkit-scrollbar { width: 4px; }
         .container::-webkit-scrollbar-thumb { background: #00F0FF; border-radius: 10px; }
 
-        /* ===== HEADER ===== */
+        /* HEADER */
         .header {
             display: flex;
             justify-content: space-between;
@@ -66,7 +65,6 @@
             background: linear-gradient(135deg, #00F0FF, #0088FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
         }
         .logo small { font-size: 14px; }
 
@@ -91,15 +89,8 @@
             font-size: 13px;
         }
         .logout-btn:hover { text-decoration: underline; }
-        .status-btn {
-            background: none;
-            border: none;
-            color: #00F0FF;
-            cursor: pointer;
-            font-size: 16px;
-        }
 
-        /* ===== HERO ===== */
+        /* HERO */
         .hero { text-align: center; padding: 10px 0 20px; }
         .date-badge {
             display: inline-block;
@@ -127,32 +118,31 @@
             line-height: 1.6;
         }
 
-        /* ===== FEATURES ===== */
+        /* FEATURES */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
             margin: 25px 0;
         }
         .feature-card {
             background: rgba(0, 240, 255, 0.03);
             border: 1px solid rgba(0, 240, 255, 0.08);
             border-radius: 14px;
-            padding: 18px 15px;
+            padding: 15px 12px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
         }
         .feature-card:hover {
-            background: rgba(0, 240, 255, 0.08);
+            background: rgba(0, 240, 255, 0.1);
             border-color: #00F0FF;
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.08);
         }
         .feature-card:active { transform: scale(0.95); }
-        .feature-card .icon { font-size: 30px; display: block; margin-bottom: 6px; }
-        .feature-card .title { font-size: 14px; font-weight: 700; color: #fff; }
-        .feature-card .desc { font-size: 12px; color: #8892b0; margin-top: 4px; }
+        .feature-card .icon { font-size: 28px; display: block; }
+        .feature-card .title { font-size: 13px; font-weight: 700; color: #fff; margin-top: 4px; }
+        .feature-card .desc { font-size: 11px; color: #8892b0; }
         .feature-card .badge {
             display: inline-block;
             background: rgba(255, 0, 128, 0.15);
@@ -160,11 +150,11 @@
             font-size: 10px;
             padding: 2px 12px;
             border-radius: 50px;
-            margin-top: 6px;
+            margin-top: 4px;
             font-weight: 600;
         }
 
-        /* ===== BUTTONS ===== */
+        /* BUTTONS */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -188,10 +178,7 @@
             color: #fff;
             box-shadow: 0 0 30px rgba(255, 0, 128, 0.2);
         }
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 50px rgba(255, 0, 128, 0.35);
-        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(255, 0, 128, 0.35); }
         .btn-secondary {
             background: rgba(0, 240, 255, 0.05);
             color: #00F0FF;
@@ -202,38 +189,16 @@
             border-color: #00F0FF;
             transform: translateY(-3px);
         }
-        .btn-success {
-            background: linear-gradient(135deg, #00F0FF, #0088FF);
-            color: #0A0E27;
-        }
-        .btn-success:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
-        }
-        .btn-danger {
-            background: #ff4444;
-            color: #fff;
-        }
-        .btn-danger:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(255, 68, 68, 0.3); }
 
-        /* ===== SECTION TITLES ===== */
-        .section-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: #00F0FF;
-            margin: 30px 0 12px;
-            text-align: center;
-        }
-
-        /* ===== REGISTRANT LIST ===== */
+        /* REGISTRANT LIST */
         .registrant-list {
             background: rgba(0, 240, 255, 0.02);
             border: 1px solid rgba(0, 240, 255, 0.06);
             border-radius: 12px;
-            padding: 12px 18px;
-            max-height: 180px;
+            padding: 15px 18px;
+            max-height: 200px;
             overflow-y: auto;
-            margin-top: 8px;
+            margin-top: 10px;
         }
         .registrant-list::-webkit-scrollbar { width: 4px; }
         .registrant-list::-webkit-scrollbar-thumb { background: #00F0FF; border-radius: 10px; }
@@ -241,12 +206,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.04);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.05);
         }
         .registrant-item:last-child { border-bottom: none; }
         .registrant-item .r-name { font-weight: 600; color: #fff; font-size: 14px; }
-        .registrant-item .r-email { color: #8892b0; font-size: 12px; }
+        .registrant-item .r-email { color: #8892b0; font-size: 13px; }
         .registrant-item .r-badge {
             background: rgba(0, 240, 255, 0.08);
             color: #00F0FF;
@@ -254,14 +219,14 @@
             padding: 2px 12px;
             border-radius: 50px;
         }
-        .empty-state { text-align: center; color: #8892b0; padding: 15px 0; font-size: 14px; }
+        .empty-state { text-align: center; color: #8892b0; padding: 20px 0; font-size: 14px; }
 
-        /* ===== TOAST ===== */
+        /* TOAST */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: rgba(18, 22, 58, 0.92);
+            background: rgba(18, 22, 58, 0.95);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 240, 255, 0.15);
             border-radius: 12px;
@@ -273,16 +238,12 @@
             transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 9999;
             max-width: 380px;
-            font-family: 'Segoe UI', sans-serif;
         }
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        .toast.show { transform: translateY(0); opacity: 1; }
         .toast .t-title { font-weight: 700; font-size: 15px; }
         .toast .t-body { font-size: 13px; color: #8892b0; margin-top: 4px; }
 
-        /* ===== MODAL ===== */
+        /* MODAL */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -299,7 +260,7 @@
         }
         .modal-overlay.active { display: flex; }
         .modal {
-            background: rgba(18, 22, 58, 0.92);
+            background: rgba(18, 22, 58, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 240, 255, 0.15);
             border-radius: 24px;
@@ -322,13 +283,12 @@
             color: #8892b0;
             font-size: 24px;
             cursor: pointer;
-            transition: color 0.3s;
         }
         .modal-close:hover { color: #fff; }
         .modal h2 { font-size: 24px; color: #00F0FF; margin-bottom: 4px; }
         .modal .modal-sub { color: #8892b0; font-size: 14px; margin-bottom: 18px; }
 
-        /* ===== FORM ===== */
+        /* FORM */
         .form-group { margin-bottom: 12px; text-align: left; }
         .form-group label { display: block; font-size: 13px; font-weight: 600; color: #c0d0e0; margin-bottom: 3px; }
         .form-group label .req { color: #FF0080; }
@@ -387,7 +347,7 @@
         .success-box.active { display: block; }
         .form-fields.active { display: none; }
 
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         .footer {
             margin-top: 30px;
             padding-top: 18px;
@@ -400,7 +360,14 @@
         .footer a:hover { text-decoration: underline; }
         .footer .uni { color: #8892b0; font-size: 12px; }
 
-        /* ===== RESPONSIVE ===== */
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00F0FF;
+            margin: 30px 0 12px;
+            text-align: center;
+        }
+
         @media (max-width: 700px) {
             .container { padding: 20px 15px; }
             h1 { font-size: 30px; }
@@ -411,7 +378,6 @@
             .header { flex-direction: column; text-align: center; }
             .modal { padding: 20px 18px; }
             .form-row { flex-direction: column; gap: 0; }
-            .logo { font-size: 22px; }
         }
         @media (max-width: 430px) {
             .features { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -419,31 +385,27 @@
             .feature-card .icon { font-size: 22px; }
             .feature-card .title { font-size: 12px; }
             h1 { font-size: 24px; }
-            .container { padding: 15px 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== MATRIX CANVAS ===== -->
+    <!-- MATRIX BACKGROUND -->
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- ===== TOAST ===== -->
+    <!-- TOAST -->
     <div class="toast" id="toast">
         <div class="t-title" id="toastTitle">✅ Action Complete</div>
         <div class="t-body" id="toastBody">Your action was successful!</div>
     </div>
 
-    <!-- ===== MODAL ===== -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <button class="modal-close" id="modalCloseBtn">&times;</button>
-
-            <!-- Form -->
             <div class="form-fields" id="formFields">
                 <h2 id="modalTitle">🚀 Sign Up</h2>
                 <p class="modal-sub" id="modalSub">Create your account for Tech Week 2026</p>
-
                 <form id="authForm">
                     <div id="signupExtra">
                         <div class="form-row">
@@ -457,58 +419,49 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label>Username <span class="req">*</span></label>
                         <input type="text" id="username" placeholder="Choose a username" required />
                     </div>
-
                     <div class="form-group">
                         <label>Password <span class="req">*</span></label>
                         <input type="password" id="password" placeholder="Min 6 characters" required minlength="6" />
                     </div>
-
                     <div id="signupExtra2">
                         <div class="form-group">
                             <label>School / Organization <span class="req">*</span></label>
                             <input type="text" id="school" placeholder="St. Timothy University" required />
                         </div>
                     </div>
-
                     <button type="submit" class="submit-btn" id="authSubmitBtn">✅ SIGN UP</button>
-
                     <div class="auth-toggle">
                         <span id="authToggleText">Already have an account? </span>
                         <a id="authToggleLink">Login here</a>
                     </div>
                 </form>
             </div>
-
-            <!-- Success -->
             <div class="success-box" id="successBox">
                 <div class="check">✅</div>
                 <h3 id="successTitle">Registration Successful!</h3>
                 <p id="successBody">Welcome to Tech Week 2026!<br />You are now registered.</p>
                 <br />
-                <button class="btn btn-success" id="successCloseBtn" style="padding:10px 35px; font-size:15px; border:none; cursor:pointer;">Close</button>
+                <button class="btn" id="successCloseBtn" style="padding:10px 35px; font-size:15px; border:none; cursor:pointer; background:linear-gradient(135deg,#00F0FF,#0088FF); color:#0A0E27; font-weight:700; border-radius:50px;">Close</button>
             </div>
         </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- MAIN CONTENT -->
     <div class="container">
 
-        <!-- Header -->
         <div class="header">
             <div class="logo">TECH WEEK <small>2026</small></div>
             <div class="user-status">
                 <span>👤 <span id="displayUsername" class="name">Guest</span></span>
                 <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logoutUser()">Logout</button>
-                <button class="status-btn" onclick="showToast('ℹ️', 'Tech Week 2026 • Oct 12-16 • St. Timothy University')">ℹ️</button>
+                <button class="logout-btn" onclick="showToast('ℹ️', 'Tech Week 2026 • Oct 12-16 • St. Timothy University')" style="color:#00F0FF;">ℹ️</button>
             </div>
         </div>
 
-        <!-- Hero -->
         <div class="hero">
             <div class="date-badge">📅 OCTOBER 12-16, 2026</div>
             <h1>Where Innovation Meets the Future</h1>
@@ -518,7 +471,6 @@
             </p>
         </div>
 
-        <!-- Features -->
         <div class="features">
             <div class="feature-card" onclick="showToast('💻', 'Tech Exhibits: 50+ student projects, AI, Robotics, VR')">
                 <span class="icon">💻</span>
@@ -558,20 +510,17 @@
             </div>
         </div>
 
-        <!-- Buttons -->
         <div class="btn-group">
             <button class="btn btn-primary" id="openModalBtn">🚀 REGISTER NOW</button>
             <button class="btn btn-secondary" onclick="viewRegistrants()">📋 View Registrants</button>
             <button class="btn btn-secondary" onclick="showToast('📅', 'Oct 12-16, 2026 • St. Timothy University • CCS Building')">📅 Event Info</button>
         </div>
 
-        <!-- Registrants -->
         <h2 class="section-title">📋 Registered Attendees</h2>
         <div class="registrant-list" id="registrantList">
             <div class="empty-state">No registrants yet. Be the first! 🚀</div>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             <div class="uni">College of Computer Studies – St Timothy University</div>
             <br />
@@ -591,11 +540,9 @@
         // ==========================================
         // 1. MATRIX RAINING NUMBERS
         // ==========================================
-
         (function() {
             const canvas = document.getElementById('matrixCanvas');
             const ctx = canvas.getContext('2d');
-
             let W, H;
 
             function resize() {
@@ -611,15 +558,12 @@
             for (let i = 0; i < cols; i++) {
                 drops[i] = Math.floor(Math.random() * -H);
             }
-
             const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
             function drawMatrix() {
                 ctx.fillStyle = 'rgba(10, 14, 39, 0.04)';
                 ctx.fillRect(0, 0, W, H);
-
                 ctx.font = fontSize + 'px monospace';
-
                 for (let i = 0; i < drops.length; i++) {
                     const char = chars[Math.floor(Math.random() * chars.length)];
                     const isBlurry = Math.random() > 0.5;
@@ -631,52 +575,41 @@
                     }
                     const brightness = 0.4 + Math.random() * 0.6;
                     ctx.fillStyle = 'rgba(0, 240, 255, ' + brightness + ')';
-
                     const x = i * fontSize;
                     const y = drops[i] * fontSize;
-
                     ctx.fillText(char, x, y);
                     ctx.shadowBlur = 0;
-
                     drops[i] += 0.5 + Math.random() * 0.5;
                     if (drops[i] * fontSize > H && Math.random() > 0.975) {
                         drops[i] = Math.floor(Math.random() * -20);
                     }
                 }
             }
-
             setInterval(drawMatrix, 45);
         })();
 
-
         // ==========================================
-        // 2. TOAST NOTIFICATION
+        // 2. TOAST
         // ==========================================
-
         function showToast(title, body) {
             const toast = document.getElementById('toast');
             document.getElementById('toastTitle').textContent = title;
             document.getElementById('toastBody').textContent = body || '';
-
             toast.classList.add('show');
             clearTimeout(toast._timeout);
-
             toast._timeout = setTimeout(function() {
                 toast.classList.remove('show');
             }, 4000);
         }
 
-
         // ==========================================
-        // 3. MODAL CONTROLS
+        // 3. MODAL
         // ==========================================
-
         let isLoginMode = false;
 
         function openModal() {
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
-
             isLoginMode = false;
             document.getElementById('signupExtra').style.display = 'flex';
             document.getElementById('signupExtra2').style.display = 'block';
@@ -684,14 +617,11 @@
             document.getElementById('modalSub').textContent = 'Create your account for Tech Week 2026';
             document.getElementById('authSubmitBtn').textContent = '✅ SIGN UP';
             document.getElementById('authToggleText').textContent = 'Already have an account? ';
-
+            document.getElementById('authToggleLink').textContent = 'Login here';
+            document.getElementById('authToggleLink').onclick = function() { switchToLogin(); };
             document.getElementById('formFields').classList.add('active');
             document.getElementById('successBox').classList.remove('active');
             document.getElementById('authForm').reset();
-
-            // Fix the toggle link
-            document.getElementById('authToggleLink').textContent = 'Login here';
-            document.getElementById('authToggleLink').onclick = function() { switchToLogin(); };
         }
 
         function closeModal() {
@@ -723,38 +653,41 @@
             document.getElementById('authToggleLink').onclick = function() { switchToLogin(); };
         }
 
-        // Event listeners
         document.getElementById('openModalBtn').addEventListener('click', openModal);
         document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
         document.getElementById('successCloseBtn').addEventListener('click', closeModal);
-
         document.getElementById('modalOverlay').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
-
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
 
         // ==========================================
-        // 4. AUTHENTICATION (Sign Up / Login)
+        // 4. AUTHENTICATION - FIXED REGISTRATION
         // ==========================================
-
         document.getElementById('authForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
+            // Get values
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
+            const school = document.getElementById('school').value.trim();
 
-            if (!username || !password) {
-                showToast('⚠️', 'Please fill in username and password.');
+            // Validate
+            if (!fullName || !email || !username || !password || !school) {
+                showToast('⚠️', 'Please fill in ALL fields.');
                 return;
             }
+
             if (password.length < 6) {
                 showToast('⚠️', 'Password must be at least 6 characters.');
                 return;
             }
 
+            // Get existing users
             let users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
 
             if (isLoginMode) {
@@ -766,7 +699,6 @@
                         break;
                     }
                 }
-
                 if (found) {
                     localStorage.setItem('techweek_current_user', JSON.stringify(found));
                     showToast('✅', 'Welcome back, ' + found.fullName + '!');
@@ -775,72 +707,57 @@
                 } else {
                     showToast('❌', 'Invalid username or password.');
                 }
-            } else {
-                // ===== SIGN UP =====
-                const fullName = document.getElementById('fullName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const school = document.getElementById('school').value.trim();
-
-                if (!fullName || !email || !school) {
-                    showToast('⚠️', 'Please fill in all required fields.');
-                    return;
-                }
-
-                // Check if username exists
-                let usernameExists = false;
-                for (let i = 0; i < users.length; i++) {
-                    if (users[i].username === username) { usernameExists = true; break; }
-                }
-                if (usernameExists) {
-                    showToast('⚠️', 'Username already taken. Please choose another.');
-                    return;
-                }
-
-                // Check if email exists
-                let emailExists = false;
-                for (let i = 0; i < users.length; i++) {
-                    if (users[i].email === email) { emailExists = true; break; }
-                }
-                if (emailExists) {
-                    showToast('⚠️', 'Email already registered. Please login.');
-                    return;
-                }
-
-                // Save new user
-                const newUser = {
-                    fullName: fullName,
-                    email: email,
-                    username: username,
-                    password: password,
-                    school: school
-                };
-
-                users.push(newUser);
-                localStorage.setItem('techweek_users', JSON.stringify(users));
-                localStorage.setItem('techweek_current_user', JSON.stringify(newUser));
-
-                // Show success
-                document.getElementById('formFields').classList.remove('active');
-                document.getElementById('successBox').classList.add('active');
-                document.getElementById('successTitle').textContent = '🎉 Registration Successful!';
-                document.getElementById('successBody').textContent = 'Welcome ' + fullName + '! You are now registered for Tech Week 2026.';
-
-                updateUI();
-
-                setTimeout(function() {
-                    closeModal();
-                }, 3000);
+                return;
             }
+
+            // ===== SIGN UP =====
+
+            // Check if username exists
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].username === username) {
+                    showToast('⚠️', 'Username "' + username + '" is already taken.');
+                    return;
+                }
+                if (users[i].email === email) {
+                    showToast('⚠️', 'Email "' + email + '" is already registered.');
+                    return;
+                }
+            }
+
+            // Create new user
+            const newUser = {
+                fullName: fullName,
+                email: email,
+                username: username,
+                password: password,
+                school: school
+            };
+
+            // Save to localStorage
+            users.push(newUser);
+            localStorage.setItem('techweek_users', JSON.stringify(users));
+            localStorage.setItem('techweek_current_user', JSON.stringify(newUser));
+
+            // Show success
+            document.getElementById('formFields').classList.remove('active');
+            document.getElementById('successBox').classList.add('active');
+            document.getElementById('successTitle').textContent = '🎉 Registration Successful!';
+            document.getElementById('successBody').textContent = 'Welcome ' + fullName + '!\n' + users.length +
+                ' people are now registered!';
+
+            updateUI();
+
+            // Auto close after 2.5 seconds
+            setTimeout(function() {
+                closeModal();
+            }, 2500);
         });
 
-
         // ==========================================
-        // 5. UI UPDATES
+        // 5. UI UPDATE
         // ==========================================
-
         function updateUI() {
             const current = JSON.parse(localStorage.getItem('techweek_current_user'));
-
             if (current) {
                 document.getElementById('displayUsername').textContent = current.fullName || current.username;
                 document.getElementById('logoutBtn').style.display = 'inline';
@@ -848,7 +765,6 @@
                 document.getElementById('displayUsername').textContent = 'Guest';
                 document.getElementById('logoutBtn').style.display = 'none';
             }
-
             updateRegistrantList();
         }
 
@@ -858,19 +774,15 @@
             updateUI();
         }
 
-
         // ==========================================
         // 6. VIEW REGISTRANTS
         // ==========================================
-
         function viewRegistrants() {
             const users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
-
             if (users.length === 0) {
                 showToast('📋', 'No registrants yet. Be the first to register! 🚀');
                 return;
             }
-
             let msg = '📋 REGISTERED USERS (' + users.length + '):\n\n';
             for (let i = 0; i < users.length; i++) {
                 msg += (i + 1) + '. ' + users[i].fullName + ' (@' + users[i].username + ')\n';
@@ -880,14 +792,14 @@
             alert(msg);
         }
 
-
         // ==========================================
-        // 7. UPDATE REGISTRANT LIST
+        // 7. UPDATE REGISTRANT LIST (FIXED)
         // ==========================================
-
         function updateRegistrantList() {
             const users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
             const list = document.getElementById('registrantList');
+
+            console.log('Updating list. Users:', users.length); // Debug
 
             if (users.length === 0) {
                 list.innerHTML = '<div class="empty-state">No registrants yet. Be the first! 🚀</div>';
@@ -895,28 +807,33 @@
             }
 
             let html = '';
-            const count = Math.min(users.length, 10);
+            const count = Math.min(users.length, 15);
             for (let i = 0; i < count; i++) {
                 html += '<div class="registrant-item">';
-                html += '<span class="r-name">' + users[i].fullName + '</span>';
+                html += '<span class="r-name">👤 ' + users[i].fullName + '</span>';
                 html += '<span class="r-email">' + users[i].email + '</span>';
-                html += '<span class="r-badge">' + users[i].school.split(' ')[0] + '</span>';
+                html += '<span class="r-badge">' + (users[i].school || 'Student') + '</span>';
                 html += '</div>';
             }
-            if (users.length > 10) {
+            if (users.length > 15) {
                 html += '<div style="text-align:center;color:#8892b0;padding:8px 0;font-size:12px;">... and ' + (users
-                    .length - 10) + ' more</div>';
+                    .length - 15) + ' more</div>';
             }
+            // Show total count
+            html +=
+                '<div style="text-align:center;color:#00F0FF;padding:10px 0;font-size:13px;font-weight:600;">Total: ' +
+                users.length + ' registered</div>';
             list.innerHTML = html;
         }
-
 
         // ==========================================
         // 8. INIT
         // ==========================================
-
         updateUI();
-        showToast('🚀', 'Welcome to Tech Week 2026!');
+        showToast('🚀', 'Welcome to Tech Week 2026! Register now!');
+
+        console.log('Tech Week 2026 loaded!');
+        console.log('Users in localStorage:', JSON.parse(localStorage.getItem('techweek_users') || '[]'));
     </script>
 
 </body>
