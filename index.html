@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* MATRIX BACKGROUND */
+        /* ===== MATRIX BACKGROUND ===== */
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -30,7 +30,7 @@
             background: #0A0E27;
         }
 
-        /* MAIN CONTAINER */
+        /* ===== MAIN CONTAINER ===== */
         .container {
             position: relative;
             z-index: 1;
@@ -49,7 +49,7 @@
         .container::-webkit-scrollbar { width: 4px; }
         .container::-webkit-scrollbar-thumb { background: #00F0FF; border-radius: 10px; }
 
-        /* HEADER */
+        /* ===== HEADER ===== */
         .header {
             display: flex;
             justify-content: space-between;
@@ -89,15 +89,8 @@
             font-size: 13px;
         }
         .logout-btn:hover { text-decoration: underline; }
-        .status-btn {
-            background: none;
-            border: none;
-            color: #00F0FF;
-            cursor: pointer;
-            font-size: 16px;
-        }
 
-        /* HERO */
+        /* ===== HERO ===== */
         .hero { text-align: center; padding: 10px 0 20px; }
         .date-badge {
             display: inline-block;
@@ -125,7 +118,7 @@
             line-height: 1.6;
         }
 
-        /* FEATURES */
+        /* ===== FEATURES ===== */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -161,7 +154,7 @@
             font-weight: 600;
         }
 
-        /* BUTTONS */
+        /* ===== BUTTONS ===== */
         .btn-group {
             display: flex;
             justify-content: center;
@@ -208,7 +201,7 @@
             box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
         }
 
-        /* SECTION TITLES */
+        /* ===== SECTION TITLES ===== */
         .section-title {
             font-size: 26px;
             font-weight: 700;
@@ -217,7 +210,7 @@
             text-align: center;
         }
 
-        /* REGISTRANT LIST */
+        /* ===== REGISTRANT LIST ===== */
         .registrant-list {
             background: rgba(0, 240, 255, 0.02);
             border: 1px solid rgba(0, 240, 255, 0.06);
@@ -248,7 +241,7 @@
         }
         .empty-state { text-align: center; color: #8892b0; padding: 20px 0; font-size: 14px; }
 
-        /* TOAST */
+        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -265,7 +258,6 @@
             transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
             z-index: 9999;
             max-width: 380px;
-            font-family: 'Segoe UI', sans-serif;
         }
         .toast.show {
             transform: translateY(0);
@@ -274,7 +266,7 @@
         .toast .t-title { font-weight: 700; font-size: 15px; }
         .toast .t-body { font-size: 13px; color: #8892b0; margin-top: 4px; }
 
-        /* MODAL */
+        /* ===== MODAL ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -319,7 +311,7 @@
         .modal h2 { font-size: 24px; color: #00F0FF; margin-bottom: 4px; }
         .modal .modal-sub { color: #8892b0; font-size: 14px; margin-bottom: 18px; }
 
-        /* FORM */
+        /* ===== FORM ===== */
         .form-group { margin-bottom: 12px; text-align: left; }
         .form-group label { display: block; font-size: 13px; font-weight: 600; color: #c0d0e0; margin-bottom: 3px; }
         .form-group label .req { color: #FF0080; }
@@ -377,7 +369,7 @@
         .success-box.active { display: block; }
         .form-fields.active { display: none; }
 
-        /* FOOTER */
+        /* ===== FOOTER ===== */
         .footer {
             margin-top: 30px;
             padding-top: 18px;
@@ -390,6 +382,7 @@
         .footer a:hover { text-decoration: underline; }
         .footer .uni { color: #8892b0; font-size: 12px; }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 700px) {
             .container { padding: 20px 15px; }
             h1 { font-size: 30px; }
@@ -412,16 +405,16 @@
 </head>
 <body>
 
-    <!-- MATRIX BACKGROUND -->
+    <!-- ===== MATRIX BACKGROUND ===== -->
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- TOAST -->
+    <!-- ===== TOAST ===== -->
     <div class="toast" id="toast">
         <div class="t-title" id="toastTitle">✅ Action Complete</div>
         <div class="t-body" id="toastBody">Your action was successful!</div>
     </div>
 
-    <!-- MODAL -->
+    <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <button class="modal-close" id="modalCloseBtn">&times;</button>
@@ -472,7 +465,7 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="container">
 
         <!-- HEADER -->
@@ -481,7 +474,7 @@
             <div class="user-status">
                 <span>👤 <span id="displayUsername" class="name">Guest</span></span>
                 <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logoutUser()">Logout</button>
-                <button class="status-btn" onclick="showToast('ℹ️', 'Tech Week 2026 • Oct 12-16 • St. Timothy University')">ℹ️</button>
+                <button class="logout-btn" onclick="showToast('ℹ️', 'Tech Week 2026 • Oct 12-16 • St. Timothy University')" style="color:#00F0FF;">ℹ️</button>
             </div>
         </div>
 
@@ -625,7 +618,6 @@
             setInterval(drawMatrix, 45);
         })();
 
-
         // ==========================================
         // 2. TOAST NOTIFICATION
         // ==========================================
@@ -642,7 +634,6 @@
                 toast.classList.remove('show');
             }, 4000);
         }
-
 
         // ==========================================
         // 3. MODAL CONTROLS
@@ -711,9 +702,8 @@
             if (e.key === 'Escape') closeModal();
         });
 
-
         // ==========================================
-        // 4. AUTHENTICATION - FIXED REGISTRATION
+        // 4. AUTHENTICATION - REGISTRATION & LOGIN
         // ==========================================
 
         document.getElementById('authForm').addEventListener('submit', function(e) {
@@ -797,7 +787,6 @@
             }, 2500);
         });
 
-
         // ==========================================
         // 5. UI UPDATES
         // ==========================================
@@ -822,7 +811,6 @@
             updateUI();
         }
 
-
         // ==========================================
         // 6. VIEW REGISTRANTS
         // ==========================================
@@ -843,7 +831,6 @@
             }
             alert(msg);
         }
-
 
         // ==========================================
         // 7. UPDATE REGISTRANT LIST
@@ -876,7 +863,6 @@
                 users.length + ' registered</div>';
             list.innerHTML = html;
         }
-
 
         // ==========================================
         // 8. INIT
