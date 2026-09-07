@@ -1,786 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tech Week 2026</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             background: #0A0E27;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            font-family: Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
         }
-
-        /* MATRIX BACKGROUND */
-        #matrixCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .box {
+            background: rgba(10, 14, 39, 0.9);
+            border: 2px solid #00F0FF;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 600px;
             width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: #0A0E27;
-        }
-
-        /* MAIN CONTAINER */
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1000px;
-            width: 100%;
-            background: rgba(10, 14, 39, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            border-radius: 24px;
-            padding: 40px 35px;
-            max-height: 95vh;
-            overflow-y: auto;
-        }
-
-        .container::-webkit-scrollbar { width: 4px; }
-        .container::-webkit-scrollbar-thumb { background: #00F0FF; border-radius: 10px; }
-
-        /* HEADER */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00F0FF, #0088FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .logo small { font-size: 14px; }
-
-        .user-status {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(0, 240, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 50px;
-            padding: 8px 18px;
-            font-size: 14px;
-            color: #8892b0;
-        }
-        .user-status .name { color: #00F0FF; font-weight: 600; }
-        .logout-btn {
-            background: none;
-            border: none;
-            color: #FF0080;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-        }
-        .logout-btn:hover { text-decoration: underline; }
-
-        /* HERO */
-        .hero { text-align: center; padding: 10px 0 20px; }
-        .date-badge {
-            display: inline-block;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-radius: 50px;
-            padding: 6px 20px;
-            font-size: 14px;
-            color: #00F0FF;
-            margin-bottom: 12px;
-        }
-        h1 {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00F0FF, #0088FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
-        }
-        .subtext {
-            font-size: 18px;
-            color: #c0d0e0;
-            max-width: 700px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
-        }
-
-        /* FEATURES */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin: 25px 0;
-        }
-        .feature-card {
-            background: rgba(0, 240, 255, 0.03);
-            border: 1px solid rgba(0, 240, 255, 0.08);
-            border-radius: 14px;
-            padding: 15px 12px;
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
         }
-        .feature-card:hover {
-            background: rgba(0, 240, 255, 0.1);
-            border-color: #00F0FF;
-            transform: translateY(-4px);
+        h1 { color: #00F0FF; font-size: 40px; margin-bottom: 10px; }
+        p { color: #8892b0; margin-bottom: 20px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #00F0FF;
+            background: #0A0E27;
+            color: white;
+            font-size: 16px;
         }
-        .feature-card:active { transform: scale(0.95); }
-        .feature-card .icon { font-size: 28px; display: block; }
-        .feature-card .title { font-size: 13px; font-weight: 700; color: #fff; margin-top: 4px; }
-        .feature-card .desc { font-size: 11px; color: #8892b0; }
-        .feature-card .badge {
-            display: inline-block;
-            background: rgba(255, 0, 128, 0.15);
-            color: #FF0080;
-            font-size: 10px;
-            padding: 2px 12px;
-            border-radius: 50px;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-
-        /* BUTTONS */
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 20px 0 25px;
-        }
-        .btn {
-            padding: 14px 35px;
+        button {
+            background: #FF0080;
+            color: white;
+            padding: 15px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 18px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
+            margin: 10px 5px;
+            transition: 0.3s;
         }
-        .btn:active { transform: scale(0.95); }
-        .btn-primary {
-            background: linear-gradient(135deg, #FF0080, #cc0066);
-            color: #fff;
-            box-shadow: 0 0 30px rgba(255, 0, 128, 0.2);
-        }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(255, 0, 128, 0.35); }
-        .btn-secondary {
-            background: rgba(0, 240, 255, 0.05);
-            color: #00F0FF;
-            border: 2px solid rgba(0, 240, 255, 0.2);
-        }
-        .btn-secondary:hover {
-            background: rgba(0, 240, 255, 0.1);
-            border-color: #00F0FF;
-            transform: translateY(-3px);
-        }
-
-        /* REGISTRANT LIST */
-        .registrant-list {
-            background: rgba(0, 240, 255, 0.02);
-            border: 1px solid rgba(0, 240, 255, 0.06);
-            border-radius: 12px;
-            padding: 15px 18px;
-            max-height: 200px;
-            overflow-y: auto;
-            margin-top: 10px;
-        }
-        .registrant-list::-webkit-scrollbar { width: 4px; }
-        .registrant-list::-webkit-scrollbar-thumb { background: #00F0FF; border-radius: 10px; }
-        .registrant-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 240, 255, 0.05);
-        }
-        .registrant-item:last-child { border-bottom: none; }
-        .registrant-item .r-name { font-weight: 600; color: #fff; font-size: 14px; }
-        .registrant-item .r-email { color: #8892b0; font-size: 13px; }
-        .registrant-item .r-badge {
-            background: rgba(0, 240, 255, 0.08);
-            color: #00F0FF;
-            font-size: 10px;
-            padding: 2px 12px;
-            border-radius: 50px;
-        }
-        .empty-state { text-align: center; color: #8892b0; padding: 20px 0; font-size: 14px; }
-
-        /* TOAST */
+        button:hover { transform: scale(1.05); }
+        .btn-blue { background: #00F0FF; color: #0A0E27; }
+        #status { color: #00F0FF; margin: 15px 0; }
+        .hidden { display: none; }
         .toast {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(18, 22, 58, 0.95);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 240, 255, 0.15);
+            bottom: 20px;
+            right: 20px;
+            background: #12163a;
+            border: 1px solid #00F0FF;
+            padding: 15px 25px;
             border-radius: 12px;
-            padding: 14px 24px;
-            color: #fff;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transform: translateY(120px);
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 9999;
-            max-width: 380px;
-        }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast .t-title { font-weight: 700; font-size: 15px; }
-        .toast .t-body { font-size: 13px; color: #8892b0; margin-top: 4px; }
-
-        /* MODAL */
-        .modal-overlay {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 14, 39, 0.7);
-            backdrop-filter: blur(14px);
-            z-index: 9998;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
         }
-        .modal-overlay.active { display: flex; }
-        .modal {
-            background: rgba(18, 22, 58, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 240, 255, 0.15);
-            border-radius: 24px;
-            padding: 30px 28px;
-            max-width: 420px;
-            width: 100%;
-            position: relative;
-            animation: modalPop 0.3s ease-out;
-        }
-        @keyframes modalPop {
-            from { transform: scale(0.9) translateY(30px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: #8892b0;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .modal-close:hover { color: #fff; }
-        .modal h2 { font-size: 24px; color: #00F0FF; margin-bottom: 4px; }
-        .modal .modal-sub { color: #8892b0; font-size: 14px; margin-bottom: 18px; }
-
-        /* FORM */
-        .form-group { margin-bottom: 12px; text-align: left; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #c0d0e0; margin-bottom: 3px; }
-        .form-group label .req { color: #FF0080; }
-        .form-group input {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 240, 255, 0.12);
-            background: rgba(10, 14, 39, 0.5);
-            color: #fff;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: #00F0FF;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.04);
-        }
-        .form-group input::placeholder { color: #445; }
-        .form-row { display: flex; gap: 12px; }
-        .form-row .form-group { flex: 1; }
-
-        .submit-btn {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #FF0080, #cc0066);
-            color: #fff;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 4px;
-        }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(255, 0, 128, 0.25); }
-        .submit-btn:active { transform: scale(0.97); }
-
-        .auth-toggle {
-            text-align: center;
-            margin-top: 14px;
-            color: #8892b0;
-            font-size: 13px;
-        }
-        .auth-toggle a { color: #00F0FF; cursor: pointer; font-weight: 600; }
-        .auth-toggle a:hover { text-decoration: underline; }
-
-        .success-box {
-            display: none;
-            text-align: center;
-            padding: 20px 10px;
-        }
-        .success-box .check { font-size: 48px; margin-bottom: 8px; }
-        .success-box h3 { color: #00F0FF; font-size: 20px; }
-        .success-box p { color: #8892b0; font-size: 14px; }
-        .success-box.active { display: block; }
-        .form-fields.active { display: none; }
-
-        /* FOOTER */
-        .footer {
-            margin-top: 30px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(0, 240, 255, 0.05);
-            text-align: center;
-            font-size: 12px;
-            color: #445;
-        }
-        .footer a { color: #00F0FF; cursor: pointer; }
-        .footer a:hover { text-decoration: underline; }
-        .footer .uni { color: #8892b0; font-size: 12px; }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: #00F0FF;
-            margin: 30px 0 12px;
-            text-align: center;
-        }
-
-        @media (max-width: 700px) {
-            .container { padding: 20px 15px; }
-            h1 { font-size: 30px; }
-            .subtext { font-size: 15px; }
-            .features { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .btn { padding: 12px 20px; font-size: 14px; width: 100%; max-width: 250px; }
-            .btn-group { flex-direction: column; align-items: center; }
-            .header { flex-direction: column; text-align: center; }
-            .modal { padding: 20px 18px; }
-            .form-row { flex-direction: column; gap: 0; }
-        }
-        @media (max-width: 430px) {
-            .features { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .feature-card { padding: 12px 8px; }
-            .feature-card .icon { font-size: 22px; }
-            .feature-card .title { font-size: 12px; }
-            h1 { font-size: 24px; }
-        }
+        .toast.show { display: block; }
     </style>
 </head>
 <body>
 
-    <!-- MATRIX BACKGROUND -->
-    <canvas id="matrixCanvas"></canvas>
+    <div class="box">
+        <h1>🚀 TECH WEEK 2026</h1>
+        <p>Register now for the biggest tech event!</p>
 
-    <!-- TOAST -->
-    <div class="toast" id="toast">
-        <div class="t-title" id="toastTitle">✅ Action Complete</div>
-        <div class="t-body" id="toastBody">Your action was successful!</div>
+        <div id="status">👤 Guest</div>
+
+        <div id="signupForm">
+            <input type="text" id="fullName" placeholder="Full Name" />
+            <input type="email" id="email" placeholder="Email" />
+            <input type="text" id="username" placeholder="Username" />
+            <input type="password" id="password" placeholder="Password (min 6 chars)" />
+            <input type="text" id="school" placeholder="School" />
+            <button onclick="register()">✅ REGISTER</button>
+        </div>
+
+        <div id="loginForm" class="hidden">
+            <input type="text" id="loginUsername" placeholder="Username" />
+            <input type="password" id="loginPassword" placeholder="Password" />
+            <button onclick="login()">🔐 LOGIN</button>
+        </div>
+
+        <div style="margin-top:15px;">
+            <button class="btn-blue" onclick="showLogin()">🔐 Login</button>
+            <button class="btn-blue" onclick="showSignup()">📝 Sign Up</button>
+            <button onclick="viewAll()">📋 View All</button>
+            <button id="logoutBtn" class="hidden" onclick="logout()" style="background:#ff4444;">🚪 Logout</button>
+        </div>
+
+        <div id="message" style="margin-top:15px; color:#FF0080;"></div>
     </div>
 
-    <!-- MODAL -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <button class="modal-close" id="modalCloseBtn">&times;</button>
-            <div class="form-fields" id="formFields">
-                <h2 id="modalTitle">🚀 Sign Up</h2>
-                <p class="modal-sub" id="modalSub">Create your account for Tech Week 2026</p>
-                <form id="authForm">
-                    <div id="signupExtra">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Full Name <span class="req">*</span></label>
-                                <input type="text" id="fullName" placeholder="Juan Dela Cruz" required />
-                            </div>
-                            <div class="form-group">
-                                <label>Email <span class="req">*</span></label>
-                                <input type="email" id="email" placeholder="juan@example.com" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Username <span class="req">*</span></label>
-                        <input type="text" id="username" placeholder="Choose a username" required />
-                    </div>
-                    <div class="form-group">
-                        <label>Password <span class="req">*</span></label>
-                        <input type="password" id="password" placeholder="Min 6 characters" required minlength="6" />
-                    </div>
-                    <div id="signupExtra2">
-                        <div class="form-group">
-                            <label>School / Organization <span class="req">*</span></label>
-                            <input type="text" id="school" placeholder="St. Timothy University" required />
-                        </div>
-                    </div>
-                    <button type="submit" class="submit-btn" id="authSubmitBtn">✅ SIGN UP</button>
-                    <div class="auth-toggle">
-                        <span id="authToggleText">Already have an account? </span>
-                        <a id="authToggleLink">Login here</a>
-                    </div>
-                </form>
-            </div>
-            <div class="success-box" id="successBox">
-                <div class="check">✅</div>
-                <h3 id="successTitle">Registration Successful!</h3>
-                <p id="successBody">Welcome to Tech Week 2026!<br />You are now registered.</p>
-                <br />
-                <button class="btn" id="successCloseBtn" style="padding:10px 35px; font-size:15px; border:none; cursor:pointer; background:linear-gradient(135deg,#00F0FF,#0088FF); color:#0A0E27; font-weight:700; border-radius:50px;">Close</button>
-            </div>
-        </div>
-    </div>
+    <div class="toast" id="toast"><div id="toastMsg">✅ Done!</div></div>
 
-    <!-- MAIN CONTENT -->
-    <div class="container">
-
-        <div class="header">
-            <div class="logo">TECH WEEK <small>2026</small></div>
-            <div class="user-status">
-                <span>👤 <span id="displayUsername" class="name">Guest</span></span>
-                <button class="logout-btn" id="logoutBtn" style="display:none;" onclick="logoutUser()">Logout</button>
-                <button class="logout-btn" onclick="showToast('ℹ️', 'Tech Week 2026 • Oct 12-16 • St. Timothy University')" style="color:#00F0FF;">ℹ️</button>
-            </div>
-        </div>
-
-        <div class="hero">
-            <div class="date-badge">📅 OCTOBER 12-16, 2026</div>
-            <h1>Where Innovation Meets the Future</h1>
-            <p class="subtext">
-                Three days of breakthrough technology exhibits, hands-on masterclasses,
-                fast-paced hackathons, and high-stakes collegiate esports.
-            </p>
-        </div>
-
-        <div class="features">
-            <div class="feature-card" onclick="showToast('💻', 'Tech Exhibits: 50+ student projects, AI, Robotics, VR')">
-                <span class="icon">💻</span>
-                <div class="title">Tech Exhibits</div>
-                <div class="desc">50+ projects</div>
-                <span class="badge">Explore →</span>
-            </div>
-            <div class="feature-card" onclick="showToast('⚡', 'Workshops: AI, Cybersecurity, Web Dev, Game Dev, Cloud')">
-                <span class="icon">⚡</span>
-                <div class="title">Workshops</div>
-                <div class="desc">10+ masterclasses</div>
-                <span class="badge">Join →</span>
-            </div>
-            <div class="feature-card" onclick="showToast('🏆', 'Competitions: Hackathon ₱50k, Coding Challenge, UI/UX')">
-                <span class="icon">🏆</span>
-                <div class="title">Competitions</div>
-                <div class="desc">₱50k prize pool</div>
-                <span class="badge">Compete →</span>
-            </div>
-            <div class="feature-card" onclick="showToast('🎮', 'Esports: Mobile Legends, Valorant, FIFA Championships')">
-                <span class="icon">🎮</span>
-                <div class="title">Esports</div>
-                <div class="desc">ML • Valorant • FIFA</div>
-                <span class="badge">Play →</span>
-            </div>
-            <div class="feature-card" onclick="showToast('🤖', 'AI & Robotics: Chatbots, Robot demos, Autonomous vehicles')">
-                <span class="icon">🤖</span>
-                <div class="title">AI & Robotics</div>
-                <div class="desc">Live demos</div>
-                <span class="badge">View →</span>
-            </div>
-            <div class="feature-card" onclick="showToast('🌐', 'Networking: Meet industry leaders, tech recruiters')">
-                <span class="icon">🌐</span>
-                <div class="title">Networking Hub</div>
-                <div class="desc">Meet leaders</div>
-                <span class="badge">Connect →</span>
-            </div>
-        </div>
-
-        <div class="btn-group">
-            <button class="btn btn-primary" id="openModalBtn">🚀 REGISTER NOW</button>
-            <button class="btn btn-secondary" onclick="viewRegistrants()">📋 View Registrants</button>
-            <button class="btn btn-secondary" onclick="showToast('📅', 'Oct 12-16, 2026 • St. Timothy University • CCS Building')">📅 Event Info</button>
-        </div>
-
-        <h2 class="section-title">📋 Registered Attendees</h2>
-        <div class="registrant-list" id="registrantList">
-            <div class="empty-state">No registrants yet. Be the first! 🚀</div>
-        </div>
-
-        <div class="footer">
-            <div class="uni">College of Computer Studies – St Timothy University</div>
-            <br />
-            <a onclick="showToast('📱', 'Follow us @TechWeek2026 on all platforms!')">Facebook</a> &bull;
-            <a onclick="showToast('📱', 'Follow us @TechWeek2026 on all platforms!')">Instagram</a> &bull;
-            <a onclick="showToast('📱', 'Follow us @TechWeek2026 on all platforms!')">Twitter</a>
-            <br /><br />
-            &copy; 2026 Tech Week 2026. All rights reserved.
-        </div>
-
-    </div>
-
-    <!-- ============================================ -->
-    <!-- ===== JAVASCRIPT ===== -->
-    <!-- ============================================ -->
     <script>
-        // ==========================================
-        // 1. MATRIX RAINING NUMBERS
-        // ==========================================
-        (function() {
-            const canvas = document.getElementById('matrixCanvas');
-            const ctx = canvas.getContext('2d');
-            let W, H;
-
-            function resize() {
-                W = canvas.width = window.innerWidth;
-                H = canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resize);
-            resize();
-
-            const fontSize = 18;
-            const cols = Math.floor(W / fontSize);
-            const drops = [];
-            for (let i = 0; i < cols; i++) {
-                drops[i] = Math.floor(Math.random() * -H);
-            }
-            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-            function drawMatrix() {
-                ctx.fillStyle = 'rgba(10, 14, 39, 0.04)';
-                ctx.fillRect(0, 0, W, H);
-                ctx.font = fontSize + 'px monospace';
-                for (let i = 0; i < drops.length; i++) {
-                    const char = chars[Math.floor(Math.random() * chars.length)];
-                    const isBlurry = Math.random() > 0.5;
-                    if (isBlurry) {
-                        ctx.shadowBlur = 12;
-                        ctx.shadowColor = '#00F0FF';
-                    } else {
-                        ctx.shadowBlur = 0;
-                    }
-                    const brightness = 0.4 + Math.random() * 0.6;
-                    ctx.fillStyle = 'rgba(0, 240, 255, ' + brightness + ')';
-                    const x = i * fontSize;
-                    const y = drops[i] * fontSize;
-                    ctx.fillText(char, x, y);
-                    ctx.shadowBlur = 0;
-                    drops[i] += 0.5 + Math.random() * 0.5;
-                    if (drops[i] * fontSize > H && Math.random() > 0.975) {
-                        drops[i] = Math.floor(Math.random() * -20);
-                    }
-                }
-            }
-            setInterval(drawMatrix, 45);
-        })();
-
-        // ==========================================
-        // 2. TOAST
-        // ==========================================
-        function showToast(title, body) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastTitle').textContent = title;
-            document.getElementById('toastBody').textContent = body || '';
-            toast.classList.add('show');
-            clearTimeout(toast._timeout);
-            toast._timeout = setTimeout(function() {
-                toast.classList.remove('show');
-            }, 4000);
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            clearTimeout(t._timeout);
+            t._timeout = setTimeout(() => t.classList.remove('show'), 3000);
         }
 
-        // ==========================================
-        // 3. MODAL
-        // ==========================================
-        let isLoginMode = false;
-
-        function openModal() {
-            document.getElementById('modalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            isLoginMode = false;
-            document.getElementById('signupExtra').style.display = 'flex';
-            document.getElementById('signupExtra2').style.display = 'block';
-            document.getElementById('modalTitle').textContent = '🚀 Sign Up';
-            document.getElementById('modalSub').textContent = 'Create your account for Tech Week 2026';
-            document.getElementById('authSubmitBtn').textContent = '✅ SIGN UP';
-            document.getElementById('authToggleText').textContent = 'Already have an account? ';
-            document.getElementById('authToggleLink').textContent = 'Login here';
-            document.getElementById('authToggleLink').onclick = function() { switchToLogin(); };
-            document.getElementById('formFields').classList.add('active');
-            document.getElementById('successBox').classList.remove('active');
-            document.getElementById('authForm').reset();
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function switchToLogin() {
-            isLoginMode = true;
-            document.getElementById('signupExtra').style.display = 'none';
-            document.getElementById('signupExtra2').style.display = 'none';
-            document.getElementById('modalTitle').textContent = '🔐 Login';
-            document.getElementById('modalSub').textContent = 'Welcome back! Login to your account.';
-            document.getElementById('authSubmitBtn').textContent = '🔐 LOGIN';
-            document.getElementById('authToggleText').textContent = "Don't have an account? ";
-            document.getElementById('authToggleLink').textContent = 'Sign up here';
-            document.getElementById('authToggleLink').onclick = function() { switchToSignup(); };
-        }
-
-        function switchToSignup() {
-            isLoginMode = false;
-            document.getElementById('signupExtra').style.display = 'flex';
-            document.getElementById('signupExtra2').style.display = 'block';
-            document.getElementById('modalTitle').textContent = '🚀 Sign Up';
-            document.getElementById('modalSub').textContent = 'Create your account for Tech Week 2026';
-            document.getElementById('authSubmitBtn').textContent = '✅ SIGN UP';
-            document.getElementById('authToggleText').textContent = 'Already have an account? ';
-            document.getElementById('authToggleLink').textContent = 'Login here';
-            document.getElementById('authToggleLink').onclick = function() { switchToLogin(); };
-        }
-
-        document.getElementById('openModalBtn').addEventListener('click', openModal);
-        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
-        document.getElementById('successCloseBtn').addEventListener('click', closeModal);
-        document.getElementById('modalOverlay').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // ==========================================
-        // 4. AUTHENTICATION - FIXED REGISTRATION
-        // ==========================================
-        document.getElementById('authForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get values
+        function register() {
             const fullName = document.getElementById('fullName').value.trim();
             const email = document.getElementById('email').value.trim();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
             const school = document.getElementById('school').value.trim();
 
-            // Validate
             if (!fullName || !email || !username || !password || !school) {
-                showToast('⚠️', 'Please fill in ALL fields.');
+                document.getElementById('message').textContent = '⚠️ Please fill in all fields!';
                 return;
             }
-
             if (password.length < 6) {
-                showToast('⚠️', 'Password must be at least 6 characters.');
+                document.getElementById('message').textContent = '⚠️ Password must be at least 6 characters!';
                 return;
             }
 
-            // Get existing users
             let users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
 
-            if (isLoginMode) {
-                // ===== LOGIN =====
-                let found = null;
-                for (let i = 0; i < users.length; i++) {
-                    if (users[i].username === username && users[i].password === password) {
-                        found = users[i];
-                        break;
-                    }
-                }
-                if (found) {
-                    localStorage.setItem('techweek_current_user', JSON.stringify(found));
-                    showToast('✅', 'Welcome back, ' + found.fullName + '!');
-                    updateUI();
-                    closeModal();
-                } else {
-                    showToast('❌', 'Invalid username or password.');
-                }
-                return;
-            }
-
-            // ===== SIGN UP =====
-
-            // Check if username exists
             for (let i = 0; i < users.length; i++) {
                 if (users[i].username === username) {
-                    showToast('⚠️', 'Username "' + username + '" is already taken.');
+                    document.getElementById('message').textContent = '⚠️ Username already taken!';
                     return;
                 }
                 if (users[i].email === email) {
-                    showToast('⚠️', 'Email "' + email + '" is already registered.');
+                    document.getElementById('message').textContent = '⚠️ Email already registered!';
                     return;
                 }
             }
 
-            // Create new user
-            const newUser = {
-                fullName: fullName,
-                email: email,
-                username: username,
-                password: password,
-                school: school
-            };
-
-            // Save to localStorage
+            const newUser = { fullName, email, username, password, school };
             users.push(newUser);
             localStorage.setItem('techweek_users', JSON.stringify(users));
             localStorage.setItem('techweek_current_user', JSON.stringify(newUser));
 
-            // Show success
-            document.getElementById('formFields').classList.remove('active');
-            document.getElementById('successBox').classList.add('active');
-            document.getElementById('successTitle').textContent = '🎉 Registration Successful!';
-            document.getElementById('successBody').textContent = 'Welcome ' + fullName + '!\n' + users.length +
-                ' people are now registered!';
-
+            document.getElementById('message').textContent = '✅ Welcome ' + fullName + '! You are registered!';
+            showToast('✅ Welcome ' + fullName + '!');
             updateUI();
+            clearInputs();
+        }
 
-            // Auto close after 2.5 seconds
-            setTimeout(function() {
-                closeModal();
-            }, 2500);
-        });
+        function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
 
-        // ==========================================
-        // 5. UI UPDATE
-        // ==========================================
-        function updateUI() {
-            const current = JSON.parse(localStorage.getItem('techweek_current_user'));
-            if (current) {
-                document.getElementById('displayUsername').textContent = current.fullName || current.username;
-                document.getElementById('logoutBtn').style.display = 'inline';
-            } else {
-                document.getElementById('displayUsername').textContent = 'Guest';
-                document.getElementById('logoutBtn').style.display = 'none';
+            if (!username || !password) {
+                document.getElementById('message').textContent = '⚠️ Please enter username and password!';
+                return;
             }
-            updateRegistrantList();
+
+            let users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
+
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].username === username && users[i].password === password) {
+                    localStorage.setItem('techweek_current_user', JSON.stringify(users[i]));
+                    document.getElementById('message').textContent = '✅ Welcome back, ' + users[i].fullName + '!';
+                    showToast('✅ Welcome back, ' + users[i].fullName + '!');
+                    updateUI();
+                    return;
+                }
+            }
+            document.getElementById('message').textContent = '❌ Invalid username or password!';
         }
 
-        function logoutUser() {
+        function logout() {
             localStorage.removeItem('techweek_current_user');
-            showToast('👋', 'You have been logged out.');
+            document.getElementById('message').textContent = '👋 Logged out!';
+            showToast('👋 Logged out!');
             updateUI();
         }
 
-        // ==========================================
-        // 6. VIEW REGISTRANTS
-        // ==========================================
-        function viewRegistrants() {
-            const users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
+        function viewAll() {
+            let users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
             if (users.length === 0) {
-                showToast('📋', 'No registrants yet. Be the first to register! 🚀');
+                document.getElementById('message').textContent = '📋 No registrants yet!';
                 return;
             }
             let msg = '📋 REGISTERED USERS (' + users.length + '):\n\n';
@@ -792,48 +192,45 @@
             alert(msg);
         }
 
-        // ==========================================
-        // 7. UPDATE REGISTRANT LIST (FIXED)
-        // ==========================================
-        function updateRegistrantList() {
-            const users = JSON.parse(localStorage.getItem('techweek_users') || '[]');
-            const list = document.getElementById('registrantList');
-
-            console.log('Updating list. Users:', users.length); // Debug
-
-            if (users.length === 0) {
-                list.innerHTML = '<div class="empty-state">No registrants yet. Be the first! 🚀</div>';
-                return;
-            }
-
-            let html = '';
-            const count = Math.min(users.length, 15);
-            for (let i = 0; i < count; i++) {
-                html += '<div class="registrant-item">';
-                html += '<span class="r-name">👤 ' + users[i].fullName + '</span>';
-                html += '<span class="r-email">' + users[i].email + '</span>';
-                html += '<span class="r-badge">' + (users[i].school || 'Student') + '</span>';
-                html += '</div>';
-            }
-            if (users.length > 15) {
-                html += '<div style="text-align:center;color:#8892b0;padding:8px 0;font-size:12px;">... and ' + (users
-                    .length - 15) + ' more</div>';
-            }
-            // Show total count
-            html +=
-                '<div style="text-align:center;color:#00F0FF;padding:10px 0;font-size:13px;font-weight:600;">Total: ' +
-                users.length + ' registered</div>';
-            list.innerHTML = html;
+        function showLogin() {
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+            document.getElementById('message').textContent = '';
         }
 
-        // ==========================================
-        // 8. INIT
-        // ==========================================
-        updateUI();
-        showToast('🚀', 'Welcome to Tech Week 2026! Register now!');
+        function showSignup() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.remove('hidden');
+            document.getElementById('message').textContent = '';
+        }
 
-        console.log('Tech Week 2026 loaded!');
-        console.log('Users in localStorage:', JSON.parse(localStorage.getItem('techweek_users') || '[]'));
+        function clearInputs() {
+            document.getElementById('fullName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('school').value = '';
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        function updateUI() {
+            const current = JSON.parse(localStorage.getItem('techweek_current_user'));
+            if (current) {
+                document.getElementById('status').textContent = '👤 ' + current.fullName;
+                document.getElementById('logoutBtn').classList.remove('hidden');
+                document.getElementById('signupForm').classList.add('hidden');
+                document.getElementById('loginForm').classList.add('hidden');
+            } else {
+                document.getElementById('status').textContent = '👤 Guest';
+                document.getElementById('logoutBtn').classList.add('hidden');
+                document.getElementById('signupForm').classList.remove('hidden');
+                document.getElementById('loginForm').classList.add('hidden');
+            }
+        }
+
+        updateUI();
+        document.getElementById('message').textContent = '🚀 Welcome to Tech Week 2026!';
     </script>
 
 </body>
