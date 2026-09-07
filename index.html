@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tech Week 2026</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>TECH WEEK 2026</title>
 
 <style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,631 +22,1574 @@
 }
 
 :root {
+
     --bg: #050816;
+
     --card: #0d1225;
+
     --card2: #111936;
+
     --text: #f5f7ff;
+
     --muted: #9ba5c7;
+
     --blue: #38bdf8;
+
     --purple: #8b5cf6;
+
     --green: #22c55e;
+
     --red: #ef4444;
-    --border: rgba(255,255,255,0.1);
+
+    --border: rgba(255,255,255,0.10);
 }
+
+
+/* =========================================================
+   BODY
+========================================================= */
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:
-        radial-gradient(circle at 20% 10%, rgba(56,189,248,.15), transparent 30%),
-        radial-gradient(circle at 80% 20%, rgba(139,92,246,.15), transparent 30%),
+
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(56,189,248,.15),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(139,92,246,.15),
+            transparent 30%
+        ),
+
         var(--bg);
+
     color: var(--text);
+
     min-height: 100vh;
+
+    overflow-x: hidden;
 }
 
-button,
-input {
-    font-family: inherit;
+
+/* =========================================================
+   DIGITAL DRIPPING NUMBERS
+========================================================= */
+
+.digital-rain {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+    opacity: .55;
 }
 
-button {
-    cursor: pointer;
+
+.digital-number {
+
+    position: absolute;
+
+    top: -100px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-weight: 700;
+
+    font-size: var(--size);
+
+    line-height: 1.15;
+
+    color:
+        rgba(
+            56,
+            189,
+            248,
+            var(--opacity)
+        );
+
+    filter: blur(var(--blur));
+
+    text-shadow:
+
+        0 0 7px
+        rgba(56,189,248,.40),
+
+        0 0 18px
+        rgba(139,92,246,.20);
+
+    animation:
+        numberFall
+        var(--duration)
+        linear
+        infinite;
+
+    animation-delay:
+        var(--delay);
+
+    user-select: none;
+
+    white-space: nowrap;
 }
+
+
+/* Falling animation */
+
+@keyframes numberFall {
+
+    0% {
+
+        transform:
+            translateY(-100px)
+            translateX(0);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity:
+            var(--opacity);
+
+    }
+
+    70% {
+
+        opacity:
+            var(--opacity);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(115vh)
+            translateX(var(--drift));
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* Occasional stretched/dripping numbers */
+
+.digital-number.drip {
+
+    transform-origin: top;
+
+    text-shadow:
+
+        0 0 5px
+        rgba(56,189,248,.45),
+
+        0 0 15px
+        rgba(56,189,248,.20);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header {
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
-    backdrop-filter: blur(15px);
-    background: rgba(5,8,22,.85);
-    border-bottom: 1px solid var(--border);
+
+    backdrop-filter:
+        blur(15px);
+
+    background:
+        rgba(5,8,22,.85);
+
+    border-bottom:
+        1px solid var(--border);
+
 }
+
 
 .nav {
+
     max-width: 1200px;
+
     margin: auto;
+
     padding: 18px 20px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 20px;
+
 }
+
 
 .logo {
+
     font-weight: 900;
+
     font-size: 20px;
+
     letter-spacing: 1px;
+
 }
+
 
 .logo span {
+
     color: var(--blue);
+
 }
+
 
 .nav-right {
+
     display: flex;
+
     align-items: center;
+
     gap: 10px;
+
 }
+
 
 .user-label {
+
     color: var(--muted);
+
     font-size: 14px;
+
 }
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 .container {
+
     max-width: 1200px;
+
     margin: auto;
-    padding: 30px 20px 80px;
+
+    padding:
+        30px 20px 80px;
+
 }
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
+
     min-height: 600px;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     text-align: center;
+
     align-items: center;
+
 }
+
 
 .badge {
+
     display: inline-block;
+
     padding: 8px 14px;
+
     border-radius: 50px;
-    background: rgba(56,189,248,.1);
-    border: 1px solid rgba(56,189,248,.3);
+
+    background:
+        rgba(56,189,248,.10);
+
+    border:
+        1px solid
+        rgba(56,189,248,.30);
+
     color: var(--blue);
+
     margin-bottom: 20px;
+
     font-size: 13px;
+
     font-weight: bold;
+
 }
+
 
 .hero h1 {
-    font-size: clamp(45px, 8vw, 90px);
+
+    font-size:
+        clamp(45px, 8vw, 90px);
+
     line-height: .95;
+
     margin-bottom: 25px;
-    background: linear-gradient(90deg, #fff, var(--blue), var(--purple));
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff,
+            var(--blue),
+            var(--purple)
+        );
+
     -webkit-background-clip: text;
+
+    background-clip: text;
+
     color: transparent;
+
 }
+
 
 .hero p {
+
     max-width: 750px;
+
     color: var(--muted);
+
     line-height: 1.7;
+
     font-size: 17px;
+
 }
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .buttons {
+
     display: flex;
+
     gap: 12px;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     margin-top: 30px;
+
 }
+
 
 .btn {
+
     border: 0;
+
     border-radius: 10px;
-    padding: 13px 20px;
+
+    padding:
+        13px 20px;
+
     font-weight: bold;
+
     transition: .2s;
+
 }
+
 
 .btn:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
+
 }
+
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--blue), var(--purple));
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--purple)
+        );
+
     color: white;
+
 }
+
 
 .btn-secondary {
-    background: rgba(255,255,255,.06);
-    border: 1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid var(--border);
+
     color: white;
+
 }
+
 
 .btn-danger {
-    background: rgba(239,68,68,.15);
-    border: 1px solid rgba(239,68,68,.3);
-    color: #fca5a5;
+
+    background:
+        rgba(239,68,68,.15);
+
+    border:
+        1px solid
+        rgba(239,68,68,.30);
+
+    color:
+        #fca5a5;
+
 }
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section {
+
     margin-top: 80px;
+
 }
+
 
 .section-title {
+
     margin-bottom: 25px;
+
 }
+
 
 .section-title h2 {
+
     font-size: 32px;
+
     margin-bottom: 8px;
+
 }
+
 
 .section-title p {
+
     color: var(--muted);
+
 }
+
+
+/* =========================================================
+   EVENT CARDS
+========================================================= */
 
 .cards {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 18px;
+
 }
+
 
 .card {
-    background: linear-gradient(145deg, var(--card), var(--card2));
-    border: 1px solid var(--border);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            var(--card),
+            var(--card2)
+        );
+
+    border:
+        1px solid var(--border);
+
     border-radius: 18px;
+
     padding: 25px;
+
     transition: .25s;
+
+    position: relative;
+
+    overflow: hidden;
+
 }
+
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 100%;
+
+    height: 1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--blue),
+            transparent
+        );
+
+    transition: .5s;
+
+}
+
+
+.card:hover::before {
+
+    left: 100%;
+
+}
+
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(56,189,248,.4);
-    box-shadow: 0 15px 50px rgba(0,0,0,.25);
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(56,189,248,.40);
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.25);
+
 }
+
 
 .icon {
+
     font-size: 40px;
+
     margin-bottom: 15px;
+
 }
+
 
 .card h3 {
+
     margin-bottom: 8px;
+
 }
+
 
 .card p {
+
     color: var(--muted);
+
     line-height: 1.6;
+
     margin-bottom: 15px;
+
 }
+
 
 .card button {
+
     background: transparent;
+
     color: var(--blue);
+
     border: 0;
+
     font-weight: bold;
+
 }
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
 
 .dashboard {
+
     display: none;
+
     margin-top: 40px;
+
 }
+
 
 .dashboard-grid {
+
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 15px;
+
 }
+
 
 .stat {
-    background: var(--card);
-    border: 1px solid var(--border);
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
     border-radius: 15px;
+
     padding: 20px;
+
 }
+
 
 .stat small {
+
     color: var(--muted);
+
 }
+
 
 .stat h3 {
+
     margin-top: 10px;
+
     font-size: 28px;
+
+    word-break: break-word;
+
 }
+
+
+/* =========================================================
+   ATTENDEES
+========================================================= */
 
 .attendees {
+
     margin-top: 30px;
+
 }
+
 
 .search {
+
     width: 100%;
+
     padding: 14px;
+
     margin: 15px 0;
+
     border-radius: 10px;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,.05);
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.05);
+
     color: white;
+
     outline: none;
+
 }
+
+
+.search:focus {
+
+    border-color:
+        var(--blue);
+
+}
+
 
 .attendee {
+
     padding: 16px;
-    border-bottom: 1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
+
     display: flex;
+
     justify-content: space-between;
+
     gap: 10px;
+
 }
+
 
 .attendee:last-child {
+
     border-bottom: 0;
+
 }
+
 
 .attendee-name {
+
     font-weight: bold;
+
 }
+
 
 .attendee-school {
+
     color: var(--muted);
+
     font-size: 13px;
+
 }
+
 
 .status {
-    color: var(--green);
+
+    color:
+        var(--green);
+
     font-size: 13px;
+
     font-weight: bold;
+
 }
+
+
+/* =========================================================
+   MODAL
+========================================================= */
 
 .modal {
+
     position: fixed;
+
     inset: 0;
-    background: rgba(0,0,0,.75);
+
+    background:
+        rgba(0,0,0,.75);
+
     display: none;
+
     align-items: center;
+
     justify-content: center;
+
     padding: 20px;
+
     z-index: 3000;
+
+    backdrop-filter:
+        blur(5px);
+
 }
+
 
 .modal-content {
+
     width: 100%;
+
     max-width: 550px;
-    background: #0c1227;
-    border: 1px solid var(--border);
+
+    background:
+        #0c1227;
+
+    border:
+        1px solid var(--border);
+
     border-radius: 20px;
+
     padding: 30px;
+
     max-height: 90vh;
+
     overflow-y: auto;
+
+    box-shadow:
+        0 25px 100px
+        rgba(0,0,0,.5);
+
 }
+
 
 .modal-header {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     margin-bottom: 20px;
+
 }
+
 
 .close {
+
     background: none;
+
     border: 0;
+
     color: white;
+
     font-size: 28px;
+
+    cursor: pointer;
+
 }
+
+
+.close:hover {
+
+    color: var(--blue);
+
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
 
 .form-group {
+
     margin-bottom: 15px;
+
 }
+
 
 .form-group label {
+
     display: block;
+
     margin-bottom: 7px;
+
     font-size: 13px;
+
     color: var(--muted);
+
 }
+
 
 .form-group input {
+
     width: 100%;
+
     padding: 13px;
+
     border-radius: 9px;
-    border: 1px solid var(--border);
-    background: #080d1d;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        #080d1d;
+
     color: white;
+
     outline: none;
+
 }
+
 
 .form-group input:focus {
-    border-color: var(--blue);
+
+    border-color:
+        var(--blue);
+
 }
+
 
 .form-error {
-    color: #fca5a5;
+
+    color:
+        #fca5a5;
+
     font-size: 13px;
+
     margin-top: 5px;
+
+    margin-bottom: 10px;
+
 }
+
 
 .form-success {
-    color: #86efac;
+
+    color:
+        #86efac;
+
     font-size: 13px;
+
     margin-top: 5px;
+
+    margin-bottom: 10px;
+
 }
+
+
+/* =========================================================
+   EVENT INFO
+========================================================= */
 
 .event-info {
+
     line-height: 1.8;
+
     color: var(--muted);
+
 }
+
 
 .event-info strong {
+
     color: white;
+
 }
+
+
+.event-info ul {
+
+    margin-left: 20px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
-    border-top: 1px solid var(--border);
+
+    position: relative;
+
+    z-index: 2;
+
+    border-top:
+        1px solid var(--border);
+
     padding: 30px 20px;
+
     text-align: center;
+
     color: var(--muted);
+
 }
+
+
+/* =========================================================
+   TOAST
+========================================================= */
 
 .toast {
+
     position: fixed;
+
     right: 20px;
+
     bottom: 20px;
-    background: #111936;
-    border: 1px solid var(--border);
-    padding: 15px 20px;
+
+    background:
+        #111936;
+
+    border:
+        1px solid var(--border);
+
+    padding:
+        15px 20px;
+
     border-radius: 10px;
+
     display: none;
+
     z-index: 5000;
-    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.4);
+
 }
+
+
+/* =========================================================
+   CONTENT ABOVE DIGITAL EFFECT
+========================================================= */
+
+header,
+main,
+footer {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width: 800px) {
+
     .cards,
     .dashboard-grid {
+
         grid-template-columns: 1fr;
+
     }
+
 
     .hero {
+
         min-height: 500px;
+
     }
+
 
     .nav {
+
         flex-direction: column;
+
     }
 
+
     .attendee {
+
         flex-direction: column;
+
     }
+
 }
+
+
+@media(max-width: 600px) {
+
+    .digital-rain {
+
+        opacity: .35;
+
+    }
+
+
+    .digital-number {
+
+        font-size:
+            calc(var(--size) * .75);
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 52px;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =======================================================
+     DIGITAL NUMBER BACKGROUND
+======================================================== -->
+
+<div
+    class="digital-rain"
+    id="digitalRain">
+</div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================== -->
+
 <header>
-    <div class="nav">
-        <div class="logo">
-            TECH <span>WEEK</span> 2026
-        </div>
 
-        <div class="nav-right">
-            <span class="user-label" id="userLabel">
-                👤 Guest
-            </span>
+<div class="nav">
 
-            <button class="btn btn-secondary"
-                    onclick="openLogin()"
-                    id="loginNav">
-                Login
-            </button>
+    <div class="logo">
 
-            <button class="btn btn-danger"
-                    onclick="logout()"
-                    id="logoutNav"
-                    style="display:none;">
-                Logout
-            </button>
-        </div>
+        TECH
+        <span>WEEK</span>
+        2026
+
     </div>
+
+
+    <div class="nav-right">
+
+        <span
+            class="user-label"
+            id="userLabel">
+
+            👤 Guest
+
+        </span>
+
+
+        <button
+            class="btn btn-secondary"
+            onclick="openLogin()"
+            id="loginNav">
+
+            Login
+
+        </button>
+
+
+        <button
+            class="btn btn-danger"
+            onclick="logout()"
+            id="logoutNav"
+            style="display:none;">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
 </header>
 
+
+<!-- =======================================================
+     MAIN
+======================================================== -->
+
 <main class="container">
+
+
+<!-- HERO -->
 
 <section class="hero">
 
     <div class="badge">
+
         📅 OCTOBER 12–16, 2026
+
     </div>
 
+
     <h1>
+
         TECH WEEK<br>
+
         2026
+
     </h1>
 
+
     <p>
+
         Where Innovation Meets the Future.
+
         Explore breakthrough technology exhibits,
         hands-on masterclasses, fast-paced hackathons,
         AI demonstrations, networking opportunities,
         and collegiate esports.
+
     </p>
+
 
     <div class="buttons">
 
-        <button class="btn btn-primary"
-                onclick="openSignup()">
+        <button
+            class="btn btn-primary"
+            onclick="openSignup()">
+
             🚀 REGISTER NOW
+
         </button>
 
-        <button class="btn btn-secondary"
-                onclick="openRegistrants()">
+
+        <button
+            class="btn btn-secondary"
+            onclick="openRegistrants()">
+
             📋 VIEW REGISTRANTS
+
         </button>
 
-        <button class="btn btn-secondary"
-                onclick="openEventInfo()">
+
+        <button
+            class="btn btn-secondary"
+            onclick="openEventInfo()">
+
             📅 EVENT INFO
+
         </button>
 
     </div>
 
 </section>
 
+
+<!-- =======================================================
+     EXPLORE
+======================================================== -->
 
 <section class="section">
 
+
 <div class="section-title">
-    <h2>Explore Tech Week</h2>
-    <p>Discover everything happening during the event.</p>
+
+    <h2>
+        Explore Tech Week
+    </h2>
+
+    <p>
+        Discover everything happening during the event.
+    </p>
+
 </div>
+
 
 <div class="cards">
 
-    <div class="card">
-        <div class="icon">💻</div>
-        <h3>Tech Exhibits</h3>
-        <p>
-            Explore innovative student and professional
-            technology projects.
-        </p>
 
-        <button onclick="openCategory('Tech Exhibits')">
-            Explore →
-        </button>
+<!-- TECH EXHIBITS -->
+
+<div class="card">
+
+    <div class="icon">
+        💻
     </div>
 
+    <h3>
+        Tech Exhibits
+    </h3>
 
-    <div class="card">
-        <div class="icon">⚡</div>
-        <h3>Workshops</h3>
-        <p>
-            Join hands-on masterclasses and learn
-            practical technology skills.
-        </p>
+    <p>
 
-        <button onclick="openCategory('Workshops')">
-            Join →
-        </button>
-    </div>
+        Explore innovative student and professional
+        technology projects.
 
+    </p>
 
-    <div class="card">
-        <div class="icon">🏆</div>
-        <h3>Competitions</h3>
-        <p>
-            Test your skills and compete for the
-            Tech Week prize pool.
-        </p>
+    <button
+        onclick="openCategory('Tech Exhibits')">
 
-        <button onclick="openCategory('Competitions')">
-            Compete →
-        </button>
-    </div>
+        Explore →
 
-
-    <div class="card">
-        <div class="icon">🎮</div>
-        <h3>Esports</h3>
-        <p>
-            Collegiate gaming tournaments including
-            ML, Valorant and FIFA.
-        </p>
-
-        <button onclick="openCategory('Esports')">
-            Play →
-        </button>
-    </div>
-
-
-    <div class="card">
-        <div class="icon">🤖</div>
-        <h3>AI & Robotics</h3>
-        <p>
-            Experience live demonstrations of
-            artificial intelligence and robotics.
-        </p>
-
-        <button onclick="openCategory('AI & Robotics')">
-            View →
-        </button>
-    </div>
-
-
-    <div class="card">
-        <div class="icon">🌐</div>
-        <h3>Networking Hub</h3>
-        <p>
-            Meet students, developers, entrepreneurs,
-            and technology leaders.
-        </p>
-
-        <button onclick="openCategory('Networking Hub')">
-            Connect →
-        </button>
-    </div>
+    </button>
 
 </div>
+
+
+<!-- WORKSHOPS -->
+
+<div class="card">
+
+    <div class="icon">
+        ⚡
+    </div>
+
+    <h3>
+        Workshops
+    </h3>
+
+    <p>
+
+        Join hands-on masterclasses and learn
+        practical technology skills.
+
+    </p>
+
+    <button
+        onclick="openCategory('Workshops')">
+
+        Join →
+
+    </button>
+
+</div>
+
+
+<!-- COMPETITIONS -->
+
+<div class="card">
+
+    <div class="icon">
+        🏆
+    </div>
+
+    <h3>
+        Competitions
+    </h3>
+
+    <p>
+
+        Test your skills and compete for the
+        Tech Week prize pool.
+
+    </p>
+
+    <button
+        onclick="openCategory('Competitions')">
+
+        Compete →
+
+    </button>
+
+</div>
+
+
+<!-- ESPORTS -->
+
+<div class="card">
+
+    <div class="icon">
+        🎮
+    </div>
+
+    <h3>
+        Esports
+    </h3>
+
+    <p>
+
+        Collegiate gaming tournaments including
+        ML, Valorant and FIFA.
+
+    </p>
+
+    <button
+        onclick="openCategory('Esports')">
+
+        Play →
+
+    </button>
+
+</div>
+
+
+<!-- AI ROBOTICS -->
+
+<div class="card">
+
+    <div class="icon">
+        🤖
+    </div>
+
+    <h3>
+        AI & Robotics
+    </h3>
+
+    <p>
+
+        Experience live demonstrations of
+        artificial intelligence and robotics.
+
+    </p>
+
+    <button
+        onclick="openCategory('AI & Robotics')">
+
+        View →
+
+    </button>
+
+</div>
+
+
+<!-- NETWORKING -->
+
+<div class="card">
+
+    <div class="icon">
+        🌐
+    </div>
+
+    <h3>
+        Networking Hub
+    </h3>
+
+    <p>
+
+        Meet students, developers, entrepreneurs,
+        and technology leaders.
+
+    </p>
+
+    <button
+        onclick="openCategory('Networking Hub')">
+
+        Connect →
+
+    </button>
+
+</div>
+
+
+</div>
+
 </section>
 
 
-<!-- USER DASHBOARD -->
+<!-- =======================================================
+     DASHBOARD
+======================================================== -->
 
-<section class="dashboard" id="dashboard">
+<section
+    class="dashboard"
+    id="dashboard">
 
-    <div class="section-title">
-        <h2>My Tech Week Dashboard</h2>
-        <p id="welcomeText"></p>
-    </div>
 
-    <div class="dashboard-grid">
+<div class="section-title">
 
-        <div class="stat">
-            <small>Account</small>
-            <h3 id="accountName">—</h3>
-        </div>
+    <h2>
+        My Tech Week Dashboard
+    </h2>
 
-        <div class="stat">
-            <small>School</small>
-            <h3 id="accountSchool">—</h3>
-        </div>
+    <p id="welcomeText"></p>
 
-        <div class="stat">
-            <small>Registration</small>
-            <h3 id="registrationStatus">Not Registered</h3>
-        </div>
+</div>
 
-    </div>
 
-    <div class="buttons" style="justify-content:flex-start;">
+<div class="dashboard-grid">
 
-        <button class="btn btn-primary"
-                onclick="registerForEvent()"
-                id="registerButton">
-            🚀 Register for Tech Week
-        </button>
 
-        <button class="btn btn-secondary"
-                onclick="openRegistrants()">
-            📋 View Attendees
-        </button>
+<div class="stat">
 
-    </div>
+    <small>
+        Account
+    </small>
+
+    <h3
+        id="accountName">
+        —
+    </h3>
+
+</div>
+
+
+<div class="stat">
+
+    <small>
+        School
+    </small>
+
+    <h3
+        id="accountSchool">
+        —
+    </h3>
+
+</div>
+
+
+<div class="stat">
+
+    <small>
+        Registration
+    </small>
+
+    <h3
+        id="registrationStatus">
+
+        Not Registered
+
+    </h3>
+
+</div>
+
+
+</div>
+
+
+<div
+    class="buttons"
+    style="justify-content:flex-start;">
+
+
+<button
+    class="btn btn-primary"
+    onclick="registerForEvent()"
+    id="registerButton">
+
+    🚀 Register for Tech Week
+
+</button>
+
+
+<button
+    class="btn btn-secondary"
+    onclick="openRegistrants()">
+
+    📋 View Attendees
+
+</button>
+
+
+</div>
+
 
 </section>
+
 
 </main>
 
 
+<!-- =======================================================
+     FOOTER
+======================================================== -->
+
 <footer>
 
-    <strong>TECH WEEK 2026</strong>
+    <strong>
+        TECH WEEK 2026
+    </strong>
 
     <br><br>
 
-    College of Computer Studies – St Timothy University
+    College of Computer Studies –
+    St Timothy University
 
     <br><br>
 
@@ -646,323 +1597,816 @@ footer {
 
     <br><br>
 
-    © 2026 Tech Week 2026. All rights reserved.
+    © 2026 Tech Week 2026.
+    All rights reserved.
 
 </footer>
 
 
-<!-- SIGNUP MODAL -->
+<!-- =======================================================
+     SIGNUP MODAL
+======================================================== -->
 
-<div class="modal" id="signupModal">
+<div
+    class="modal"
+    id="signupModal">
+
 
 <div class="modal-content">
 
-<div class="modal-header">
-    <h2>🚀 Sign Up</h2>
 
-    <button class="close"
-            onclick="closeModal('signupModal')">
+<div class="modal-header">
+
+    <h2>
+        🚀 Sign Up
+    </h2>
+
+    <button
+        class="close"
+        onclick="closeModal('signupModal')">
+
         ×
+
     </button>
+
 </div>
 
-<p style="color:var(--muted); margin-bottom:20px;">
+
+<p
+    style="
+        color:var(--muted);
+        margin-bottom:20px;
+    ">
+
     Create your Tech Week 2026 account.
+
 </p>
 
-<form onsubmit="signup(event)">
+
+<form
+    onsubmit="signup(event)">
+
 
 <div class="form-group">
-<label>Full Name *</label>
-<input id="signupName"
-       placeholder="Juan Dela Cruz"
-       required>
+
+<label>
+    Full Name *
+</label>
+
+<input
+    id="signupName"
+    placeholder="Juan Dela Cruz"
+    required>
+
 </div>
+
 
 <div class="form-group">
-<label>Email *</label>
-<input id="signupEmail"
-       type="email"
-       placeholder="juan@example.com"
-       required>
+
+<label>
+    Email *
+</label>
+
+<input
+    id="signupEmail"
+    type="email"
+    placeholder="juan@example.com"
+    required>
+
 </div>
+
 
 <div class="form-group">
-<label>Username *</label>
-<input id="signupUsername"
-       placeholder="Choose a username"
-       required>
+
+<label>
+    Username *
+</label>
+
+<input
+    id="signupUsername"
+    placeholder="Choose a username"
+    required>
+
 </div>
+
 
 <div class="form-group">
-<label>Password *</label>
-<input id="signupPassword"
-       type="password"
-       minlength="6"
-       placeholder="Minimum 6 characters"
-       required>
+
+<label>
+    Password *
+</label>
+
+<input
+    id="signupPassword"
+    type="password"
+    minlength="6"
+    placeholder="Minimum 6 characters"
+    required>
+
 </div>
+
 
 <div class="form-group">
-<label>School / Organization *</label>
-<input id="signupSchool"
-       placeholder="St. Timothy University"
-       required>
+
+<label>
+    School / Organization *
+</label>
+
+<input
+    id="signupSchool"
+    placeholder="St. Timothy University"
+    required>
+
 </div>
 
-<div id="signupMessage"></div>
 
-<button class="btn btn-primary"
-        style="width:100%; margin-top:10px;">
+<div
+    id="signupMessage">
+</div>
+
+
+<button
+    class="btn btn-primary"
+    style="
+        width:100%;
+        margin-top:10px;
+    ">
+
     ✅ CREATE ACCOUNT
+
 </button>
+
 
 </form>
 
-<p style="text-align:center; margin-top:20px; color:var(--muted);">
+
+<p
+    style="
+        text-align:center;
+        margin-top:20px;
+        color:var(--muted);
+    ">
+
     Already have an account?
+
     <button
         onclick="switchToLogin()"
-        style="background:none;border:0;color:var(--blue);">
+        style="
+            background:none;
+            border:0;
+            color:var(--blue);
+            cursor:pointer;
+        ">
+
         Login
+
     </button>
+
 </p>
 
+
 </div>
+
 </div>
 
 
-<!-- LOGIN MODAL -->
+<!-- =======================================================
+     LOGIN MODAL
+======================================================== -->
 
-<div class="modal" id="loginModal">
+<div
+    class="modal"
+    id="loginModal">
+
 
 <div class="modal-content">
 
+
 <div class="modal-header">
 
-<h2>🔐 Login</h2>
+    <h2>
+        🔐 Login
+    </h2>
 
-<button class="close"
+    <button
+        class="close"
         onclick="closeModal('loginModal')">
-    ×
-</button>
+
+        ×
+
+    </button>
 
 </div>
 
-<form onsubmit="login(event)">
 
-<div class="form-group">
-<label>Username or Email</label>
+<form
+    onsubmit="login(event)">
 
-<input id="loginIdentity"
-       placeholder="Username or email"
-       required>
-
-</div>
 
 <div class="form-group">
 
-<label>Password</label>
+<label>
+    Username or Email
+</label>
 
-<input id="loginPassword"
-       type="password"
-       placeholder="Password"
-       required>
+<input
+    id="loginIdentity"
+    placeholder="Username or email"
+    required>
 
 </div>
 
-<div id="loginMessage"></div>
 
-<button class="btn btn-primary"
-        style="width:100%;">
+<div class="form-group">
+
+<label>
+    Password
+</label>
+
+<input
+    id="loginPassword"
+    type="password"
+    placeholder="Password"
+    required>
+
+</div>
+
+
+<div
+    id="loginMessage">
+</div>
+
+
+<button
+    class="btn btn-primary"
+    style="width:100%;">
 
     🔐 LOGIN
 
 </button>
 
+
 </form>
 
-<p style="text-align:center;margin-top:20px;color:var(--muted);">
 
-Don't have an account?
+<p
+    style="
+        text-align:center;
+        margin-top:20px;
+        color:var(--muted);
+    ">
 
-<button
-onclick="switchToSignup()"
-style="background:none;border:0;color:var(--blue);">
+    Don't have an account?
 
-Sign Up
+    <button
+        onclick="switchToSignup()"
+        style="
+            background:none;
+            border:0;
+            color:var(--blue);
+            cursor:pointer;
+        ">
 
-</button>
+        Sign Up
+
+    </button>
 
 </p>
 
+
 </div>
+
 </div>
 
 
-<!-- REGISTRANTS -->
+<!-- =======================================================
+     REGISTRANTS MODAL
+======================================================== -->
 
-<div class="modal" id="registrantsModal">
+<div
+    class="modal"
+    id="registrantsModal">
+
 
 <div class="modal-content">
 
+
 <div class="modal-header">
 
-<h2>📋 Registered Attendees</h2>
+    <h2>
+        📋 Registered Attendees
+    </h2>
 
-<button class="close"
-onclick="closeModal('registrantsModal')">
-×
-</button>
+    <button
+        class="close"
+        onclick="closeModal('registrantsModal')">
+
+        ×
+
+    </button>
 
 </div>
 
-<p style="color:var(--muted);">
-Total registered attendees:
-<strong id="registrantCount">0</strong>
+
+<p
+    style="color:var(--muted);">
+
+    Total registered attendees:
+
+    <strong
+        id="registrantCount">
+
+        0
+
+    </strong>
+
 </p>
+
 
 <input
-class="search"
-id="attendeeSearch"
-placeholder="Search attendee..."
-oninput="renderRegistrants()">
+    class="search"
+    id="attendeeSearch"
+    placeholder="Search attendee..."
+    oninput="renderRegistrants()">
 
-<div id="registrantList"></div>
+
+<div
+    id="registrantList">
+</div>
+
 
 </div>
+
 </div>
 
 
-<!-- EVENT INFO -->
+<!-- =======================================================
+     EVENT INFO MODAL
+======================================================== -->
 
-<div class="modal" id="eventModal">
+<div
+    class="modal"
+    id="eventModal">
+
 
 <div class="modal-content">
 
+
 <div class="modal-header">
 
-<h2>📅 Tech Week 2026</h2>
+    <h2>
+        📅 Tech Week 2026
+    </h2>
 
-<button class="close"
-onclick="closeModal('eventModal')">
-×
-</button>
+    <button
+        class="close"
+        onclick="closeModal('eventModal')">
+
+        ×
+
+    </button>
 
 </div>
+
 
 <div class="event-info">
 
+
 <p>
-<strong>Event:</strong>
+
+<strong>
+    Event:
+</strong>
+
 Tech Week 2026
+
 </p>
 
+
 <p>
-<strong>Date:</strong>
+
+<strong>
+    Date:
+</strong>
+
 October 12–16, 2026
+
 </p>
 
+
 <p>
-<strong>Theme:</strong>
+
+<strong>
+    Theme:
+</strong>
+
 Where Innovation Meets the Future
+
 </p>
 
+
 <p>
-<strong>Location:</strong>
+
+<strong>
+    Location:
+</strong>
+
 College of Computer Studies –
 St Timothy University
+
 </p>
+
 
 <br>
 
+
 <p>
-Tech Week 2026 brings students, developers,
-entrepreneurs and technology enthusiasts together
-for a week of innovation, learning, competition
-and networking.
+
+Tech Week 2026 brings students,
+developers, entrepreneurs and
+technology enthusiasts together
+for a week of innovation, learning,
+competition and networking.
+
 </p>
+
 
 <br>
 
+
 <p>
-<strong>Activities:</strong>
+
+<strong>
+    Activities:
+</strong>
+
 </p>
 
-<ul style="margin-left:20px;line-height:2;">
 
-<li>Technology Exhibits</li>
-<li>Technology Workshops</li>
-<li>Hackathons</li>
-<li>Esports</li>
-<li>AI & Robotics</li>
-<li>Networking</li>
+<ul>
+
+<li>
+    Technology Exhibits
+</li>
+
+<li>
+    Technology Workshops
+</li>
+
+<li>
+    Hackathons
+</li>
+
+<li>
+    Esports
+</li>
+
+<li>
+    AI & Robotics
+</li>
+
+<li>
+    Networking
+</li>
 
 </ul>
 
+
+</div>
+
 </div>
 
 </div>
-</div>
 
 
-<!-- CATEGORY MODAL -->
+<!-- =======================================================
+     CATEGORY MODAL
+======================================================== -->
 
-<div class="modal" id="categoryModal">
+<div
+    class="modal"
+    id="categoryModal">
+
 
 <div class="modal-content">
 
+
 <div class="modal-header">
 
-<h2 id="categoryTitle">
-Tech Week
-</h2>
+    <h2
+        id="categoryTitle">
 
-<button class="close"
-onclick="closeModal('categoryModal')">
-×
+        Tech Week
+
+    </h2>
+
+
+    <button
+        class="close"
+        onclick="closeModal('categoryModal')">
+
+        ×
+
+    </button>
+
+</div>
+
+
+<div
+    id="categoryContent"
+    style="
+        color:var(--muted);
+        line-height:1.8;
+    ">
+
+</div>
+
+
+<div
+    class="buttons"
+    style="
+        justify-content:flex-start;
+    ">
+
+<button
+    class="btn btn-primary"
+    onclick="
+        registerForEvent();
+        closeModal('categoryModal');
+    ">
+
+    🚀 Register Now
+
 </button>
 
 </div>
 
-<div id="categoryContent"
-style="color:var(--muted);line-height:1.8;">
-</div>
-
-<div class="buttons"
-style="justify-content:flex-start;">
-
-<button class="btn btn-primary"
-onclick="registerForEvent(); closeModal('categoryModal');">
-
-🚀 Register Now
-
-</button>
 
 </div>
 
 </div>
+
+
+<!-- =======================================================
+     TOAST
+======================================================== -->
+
+<div
+    class="toast"
+    id="toast">
 </div>
 
 
-<div class="toast" id="toast"></div>
-
+<!-- =======================================================
+     JAVASCRIPT
+======================================================== -->
 
 <script>
 
+
 /* =========================================================
-   DATABASE
+   DIGITAL NUMBER EFFECT
 ========================================================= */
 
-const DB_USERS = "techweek_users";
-const DB_CURRENT = "techweek_current";
-const DB_REGISTRATIONS = "techweek_registrations";
+const rainContainer =
+    document.getElementById(
+        "digitalRain"
+    );
+
+
+/*
+    Number of falling streams.
+    24 keeps it subtle instead of
+    filling the entire screen.
+*/
+
+const streamCount = 24;
+
+
+const numberCharacters =
+    "0123456789011010011010101100100101";
+
+
+for (
+    let i = 0;
+    i < streamCount;
+    i++
+) {
+
+
+    const number =
+        document.createElement(
+            "div"
+        );
+
+
+    number.className =
+        "digital-number";
+
+
+    /*
+        Around 25% of streams
+        get the dripping effect.
+    */
+
+    if (
+        Math.random() < .25
+    ) {
+
+        number.classList.add(
+            "drip"
+        );
+
+    }
+
+
+    /*
+        Create random numbers
+    */
+
+    let text = "";
+
+
+    const length =
+        Math.floor(
+            Math.random() * 5
+        ) + 2;
+
+
+    for (
+        let j = 0;
+        j < length;
+        j++
+    ) {
+
+        text +=
+
+            numberCharacters[
+                Math.floor(
+                    Math.random() *
+                    numberCharacters.length
+                )
+            ];
+
+
+        if (
+            j < length - 1
+        ) {
+
+            text += "<br>";
+
+        }
+
+    }
+
+
+    number.innerHTML =
+        text;
+
+
+    /*
+        Random horizontal position
+    */
+
+    number.style.left =
+        Math.random() * 100 + "%";
+
+
+    /*
+        Random size
+    */
+
+    number.style.setProperty(
+
+        "--size",
+
+        (
+            Math.random() * 25
+            + 14
+        ) + "px"
+
+    );
+
+
+    /*
+        Some numbers are blurry,
+        others remain sharp.
+    */
+
+    number.style.setProperty(
+
+        "--blur",
+
+        Math.random() < .35
+
+            ?
+
+            (
+                Math.random() * 3
+                + 1
+            ) + "px"
+
+            :
+
+            "0px"
+
+    );
+
+
+    /*
+        Random transparency
+    */
+
+    number.style.setProperty(
+
+        "--opacity",
+
+        (
+            Math.random() * .35
+            + .15
+        ).toFixed(2)
+
+    );
+
+
+    /*
+        Random falling speed
+    */
+
+    number.style.setProperty(
+
+        "--duration",
+
+        (
+            Math.random() * 9
+            + 8
+        ) + "s"
+
+    );
+
+
+    /*
+        Different starting points
+    */
+
+    number.style.setProperty(
+
+        "--delay",
+
+        -(
+            Math.random() * 12
+        ) + "s"
+
+    );
+
+
+    /*
+        Slight horizontal movement
+    */
+
+    number.style.setProperty(
+
+        "--drift",
+
+        (
+            Math.random() * 80
+            - 40
+        ) + "px"
+
+    );
+
+
+    rainContainer.appendChild(
+        number
+    );
+
+}
+
+
+/* =========================================================
+   LOCAL STORAGE DATABASE
+========================================================= */
+
+const DB_USERS =
+    "techweek_users";
+
+
+const DB_CURRENT =
+    "techweek_current";
+
+
+const DB_REGISTRATIONS =
+    "techweek_registrations";
 
 
 function getUsers() {
 
     return JSON.parse(
-        localStorage.getItem(DB_USERS) || "[]"
+
+        localStorage.getItem(
+            DB_USERS
+        ) || "[]"
+
     );
 
 }
@@ -971,8 +2415,11 @@ function getUsers() {
 function saveUsers(users) {
 
     localStorage.setItem(
+
         DB_USERS,
+
         JSON.stringify(users)
+
     );
 
 }
@@ -981,7 +2428,11 @@ function saveUsers(users) {
 function getRegistrations() {
 
     return JSON.parse(
-        localStorage.getItem(DB_REGISTRATIONS) || "[]"
+
+        localStorage.getItem(
+            DB_REGISTRATIONS
+        ) || "[]"
+
     );
 
 }
@@ -990,8 +2441,11 @@ function getRegistrations() {
 function saveRegistrations(data) {
 
     localStorage.setItem(
+
         DB_REGISTRATIONS,
+
         JSON.stringify(data)
+
     );
 
 }
@@ -1000,7 +2454,11 @@ function saveRegistrations(data) {
 function getCurrentUser() {
 
     return JSON.parse(
-        localStorage.getItem(DB_CURRENT) || "null"
+
+        localStorage.getItem(
+            DB_CURRENT
+        ) || "null"
+
     );
 
 }
@@ -1012,35 +2470,48 @@ function getCurrentUser() {
 
 function openModal(id) {
 
-    document.getElementById(id).style.display = "flex";
+    document.getElementById(
+        id
+    ).style.display =
+        "flex";
 
 }
 
 
 function closeModal(id) {
 
-    document.getElementById(id).style.display = "none";
+    document.getElementById(
+        id
+    ).style.display =
+        "none";
 
 }
 
 
 function openSignup() {
 
-    openModal("signupModal");
+    openModal(
+        "signupModal"
+    );
 
 }
 
 
 function openLogin() {
 
-    openModal("loginModal");
+    openModal(
+        "loginModal"
+    );
 
 }
 
 
 function switchToLogin() {
 
-    closeModal("signupModal");
+    closeModal(
+        "signupModal"
+    );
+
     openLogin();
 
 }
@@ -1048,7 +2519,10 @@ function switchToLogin() {
 
 function switchToSignup() {
 
-    closeModal("loginModal");
+    closeModal(
+        "loginModal"
+    );
+
     openSignup();
 
 }
@@ -1056,7 +2530,9 @@ function switchToSignup() {
 
 function openEventInfo() {
 
-    openModal("eventModal");
+    openModal(
+        "eventModal"
+    );
 
 }
 
@@ -1065,7 +2541,9 @@ function openRegistrants() {
 
     renderRegistrants();
 
-    openModal("registrantsModal");
+    openModal(
+        "registrantsModal"
+    );
 
 }
 
@@ -1078,28 +2556,52 @@ function signup(event) {
 
     event.preventDefault();
 
+
     const name =
-        document.getElementById("signupName").value.trim();
+        document.getElementById(
+            "signupName"
+        ).value.trim();
+
 
     const email =
-        document.getElementById("signupEmail").value.trim().toLowerCase();
+        document.getElementById(
+            "signupEmail"
+        ).value
+        .trim()
+        .toLowerCase();
+
 
     const username =
-        document.getElementById("signupUsername").value.trim();
+        document.getElementById(
+            "signupUsername"
+        ).value.trim();
+
 
     const password =
-        document.getElementById("signupPassword").value;
+        document.getElementById(
+            "signupPassword"
+        ).value;
+
 
     const school =
-        document.getElementById("signupSchool").value.trim();
+        document.getElementById(
+            "signupSchool"
+        ).value.trim();
+
 
     const message =
-        document.getElementById("signupMessage");
+        document.getElementById(
+            "signupMessage"
+        );
 
 
-    if (password.length < 6) {
+    if (
+        password.length < 6
+    ) {
 
-        message.className = "form-error";
+        message.className =
+            "form-error";
+
         message.textContent =
             "Password must contain at least 6 characters.";
 
@@ -1108,18 +2610,30 @@ function signup(event) {
     }
 
 
-    const users = getUsers();
+    const users =
+        getUsers();
 
 
-    const duplicate = users.find(user =>
-        user.email === email ||
-        user.username.toLowerCase() === username.toLowerCase()
-    );
+    const duplicate =
+        users.find(
+            user =>
+
+                user.email === email
+
+                ||
+
+                user.username
+                    .toLowerCase()
+                    ===
+                    username.toLowerCase()
+        );
 
 
     if (duplicate) {
 
-        message.className = "form-error";
+        message.className =
+            "form-error";
+
         message.textContent =
             "Email or username is already registered.";
 
@@ -1130,7 +2644,8 @@ function signup(event) {
 
     const newUser = {
 
-        id: Date.now(),
+        id:
+            Date.now(),
 
         name,
 
@@ -1143,23 +2658,36 @@ function signup(event) {
         school,
 
         createdAt:
-            new Date().toISOString()
+            new Date()
+            .toISOString()
 
     };
 
 
-    users.push(newUser);
-
-    saveUsers(users);
-
-
-    localStorage.setItem(
-        DB_CURRENT,
-        JSON.stringify(newUser)
+    users.push(
+        newUser
     );
 
 
-    message.className = "form-success";
+    saveUsers(
+        users
+    );
+
+
+    localStorage.setItem(
+
+        DB_CURRENT,
+
+        JSON.stringify(
+            newUser
+        )
+
+    );
+
+
+    message.className =
+        "form-success";
+
 
     message.textContent =
         "Registration successful!";
@@ -1170,13 +2698,21 @@ function signup(event) {
     );
 
 
-    setTimeout(() => {
+    setTimeout(
 
-        closeModal("signupModal");
+        () => {
 
-        updateUI();
+            closeModal(
+                "signupModal"
+            );
 
-    }, 700);
+            updateUI();
+
+        },
+
+        700
+
+    );
 
 }
 
@@ -1191,38 +2727,58 @@ function login(event) {
 
 
     const identity =
-        document.getElementById("loginIdentity")
-        .value
+        document.getElementById(
+            "loginIdentity"
+        ).value
         .trim()
         .toLowerCase();
 
 
     const password =
-        document.getElementById("loginPassword")
-        .value;
+        document.getElementById(
+            "loginPassword"
+        ).value;
 
 
     const message =
-        document.getElementById("loginMessage");
+        document.getElementById(
+            "loginMessage"
+        );
 
 
-    const users = getUsers();
+    const users =
+        getUsers();
 
 
-    const user = users.find(u =>
+    const user =
+        users.find(
 
-        (
-            u.username.toLowerCase() === identity ||
-            u.email.toLowerCase() === identity
-        ) &&
-        u.password === password
+            u =>
 
-    );
+                (
+                    u.username
+                        .toLowerCase()
+                        === identity
+
+                    ||
+
+                    u.email
+                        .toLowerCase()
+                        === identity
+                )
+
+                &&
+
+                u.password ===
+                password
+
+        );
 
 
     if (!user) {
 
-        message.className = "form-error";
+        message.className =
+            "form-error";
 
         message.textContent =
             "Invalid username/email or password.";
@@ -1233,16 +2789,27 @@ function login(event) {
 
 
     localStorage.setItem(
+
         DB_CURRENT,
-        JSON.stringify(user)
+
+        JSON.stringify(
+            user
+        )
+
     );
 
 
-    closeModal("loginModal");
+    closeModal(
+        "loginModal"
+    );
 
 
     showToast(
-        "👋 Welcome back, " + user.name + "!"
+
+        "👋 Welcome back, "
+        + user.name
+        + "!"
+
     );
 
 
@@ -1257,9 +2824,13 @@ function login(event) {
 
 function logout() {
 
-    localStorage.removeItem(DB_CURRENT);
+    localStorage.removeItem(
+        DB_CURRENT
+    );
+
 
     updateUI();
+
 
     showToast(
         "You have been logged out."
@@ -1274,20 +2845,32 @@ function logout() {
 
 function updateUI() {
 
-    const user = getCurrentUser();
+    const user =
+        getCurrentUser();
 
 
     const userLabel =
-        document.getElementById("userLabel");
+        document.getElementById(
+            "userLabel"
+        );
+
 
     const loginNav =
-        document.getElementById("loginNav");
+        document.getElementById(
+            "loginNav"
+        );
+
 
     const logoutNav =
-        document.getElementById("logoutNav");
+        document.getElementById(
+            "logoutNav"
+        );
+
 
     const dashboard =
-        document.getElementById("dashboard");
+        document.getElementById(
+            "dashboard"
+        );
 
 
     if (user) {
@@ -1295,29 +2878,37 @@ function updateUI() {
         userLabel.textContent =
             "👤 " + user.name;
 
+
         loginNav.style.display =
             "none";
 
+
         logoutNav.style.display =
             "block";
+
 
         dashboard.style.display =
             "block";
 
 
-        document.getElementById("welcomeText")
-            .textContent =
+        document.getElementById(
+            "welcomeText"
+        ).textContent =
+
             "Welcome to your Tech Week account, "
-            + user.name + "!";
+            + user.name
+            + "!";
 
 
-        document.getElementById("accountName")
-            .textContent =
+        document.getElementById(
+            "accountName"
+        ).textContent =
             user.name;
 
 
-        document.getElementById("accountSchool")
-            .textContent =
+        document.getElementById(
+            "accountSchool"
+        ).textContent =
             user.school;
 
 
@@ -1327,7 +2918,11 @@ function updateUI() {
 
         const registered =
             registrations.some(
-                r => r.email === user.email
+
+                r =>
+                    r.email ===
+                    user.email
+
             );
 
 
@@ -1348,47 +2943,62 @@ function updateUI() {
             status.textContent =
                 "Registered ✓";
 
+
             status.style.color =
                 "var(--green)";
+
 
             button.textContent =
                 "✓ Already Registered";
 
+
             button.disabled =
                 true;
+
 
             button.style.opacity =
                 ".6";
 
-        } else {
+        }
+
+        else {
 
             status.textContent =
                 "Not Registered";
 
+
             status.style.color =
                 "var(--red)";
+
 
             button.textContent =
                 "🚀 Register for Tech Week";
 
+
             button.disabled =
                 false;
+
 
             button.style.opacity =
                 "1";
 
         }
 
-    } else {
+    }
+
+    else {
 
         userLabel.textContent =
             "👤 Guest";
 
+
         loginNav.style.display =
             "block";
 
+
         logoutNav.style.display =
             "none";
+
 
         dashboard.style.display =
             "none";
@@ -1404,7 +3014,8 @@ function updateUI() {
 
 function registerForEvent() {
 
-    const user = getCurrentUser();
+    const user =
+        getCurrentUser();
 
 
     if (!user) {
@@ -1413,7 +3024,9 @@ function registerForEvent() {
             "Please create an account or login first."
         );
 
+
         openSignup();
+
 
         return;
 
@@ -1426,7 +3039,11 @@ function registerForEvent() {
 
     const alreadyRegistered =
         registrations.some(
-            r => r.email === user.email
+
+            r =>
+                r.email ===
+                user.email
+
         );
 
 
@@ -1436,6 +3053,7 @@ function registerForEvent() {
             "You are already registered!"
         );
 
+
         return;
 
     }
@@ -1443,18 +3061,24 @@ function registerForEvent() {
 
     registrations.push({
 
-        id: Date.now(),
+        id:
+            Date.now(),
 
-        name: user.name,
+        name:
+            user.name,
 
-        email: user.email,
+        email:
+            user.email,
 
-        username: user.username,
+        username:
+            user.username,
 
-        school: user.school,
+        school:
+            user.school,
 
         registeredAt:
-            new Date().toISOString()
+            new Date()
+                .toISOString()
 
     });
 
@@ -1475,7 +3099,7 @@ function registerForEvent() {
 
 
 /* =========================================================
-   REGISTRANT DISPLAY
+   DISPLAY REGISTRANTS
 ========================================================= */
 
 function renderRegistrants() {
@@ -1484,11 +3108,17 @@ function renderRegistrants() {
         getRegistrations();
 
 
-    const search =
+    const searchElement =
         document.getElementById(
             "attendeeSearch"
-        )?.value
-        .toLowerCase() || "";
+        );
+
+
+    const search =
+        searchElement
+            ?.value
+            .toLowerCase()
+            || "";
 
 
     const list =
@@ -1498,20 +3128,25 @@ function renderRegistrants() {
 
 
     const filtered =
-        registrations.filter(r =>
+        registrations.filter(
 
-            r.name.toLowerCase()
-                .includes(search)
+            r =>
 
-            ||
+                r.name
+                    .toLowerCase()
+                    .includes(search)
 
-            r.school.toLowerCase()
-                .includes(search)
+                ||
 
-            ||
+                r.school
+                    .toLowerCase()
+                    .includes(search)
 
-            r.username.toLowerCase()
-                .includes(search)
+                ||
+
+                r.username
+                    .toLowerCase()
+                    .includes(search)
 
         );
 
@@ -1522,19 +3157,22 @@ function renderRegistrants() {
         registrations.length;
 
 
-    if (filtered.length === 0) {
+    if (
+        filtered.length === 0
+    ) {
 
         list.innerHTML = `
 
-        <div style="
-            padding:30px;
-            text-align:center;
-            color:var(--muted);
-        ">
+            <div
+                style="
+                    padding:30px;
+                    text-align:center;
+                    color:var(--muted);
+                ">
 
-            No registered attendees found.
+                No registered attendees found.
 
-        </div>
+            </div>
 
         `;
 
@@ -1544,39 +3182,54 @@ function renderRegistrants() {
 
 
     list.innerHTML =
-        filtered.map((r,index) => `
 
-        <div class="attendee">
+        filtered.map(
 
-            <div>
+            r => `
 
-                <div class="attendee-name">
+            <div class="attendee">
 
-                    ${escapeHTML(r.name)}
+                <div>
+
+                    <div
+                        class="attendee-name">
+
+                        ${escapeHTML(
+                            r.name
+                        )}
+
+                    </div>
+
+                    <div
+                        class="attendee-school">
+
+                        ${escapeHTML(
+                            r.school
+                        )}
+
+                        <br>
+
+                        @${escapeHTML(
+                            r.username
+                        )}
+
+                    </div>
 
                 </div>
 
-                <div class="attendee-school">
 
-                    ${escapeHTML(r.school)}
+                <div
+                    class="status">
 
-                    <br>
-
-                    @${escapeHTML(r.username)}
+                    ✓ Registered
 
                 </div>
 
             </div>
 
-            <div class="status">
+            `
 
-                ✓ Registered
-
-            </div>
-
-        </div>
-
-    `).join("");
+        ).join("");
 
 }
 
@@ -1595,105 +3248,241 @@ function openCategory(category) {
 
     const descriptions = {
 
+
         "Tech Exhibits":
+
         `
+
         <p>
+
         Discover innovative technology projects,
         software applications, hardware prototypes,
         research projects and student inventions.
+
         </p>
+
         <br>
-        <strong>Featured:</strong>
-        <ul style="margin-left:20px;">
-        <li>Student Software Projects</li>
-        <li>Hardware Prototypes</li>
-        <li>IoT Projects</li>
-        <li>Emerging Technologies</li>
+
+        <strong>
+            Featured:
+        </strong>
+
+        <ul>
+
+            <li>
+                Student Software Projects
+            </li>
+
+            <li>
+                Hardware Prototypes
+            </li>
+
+            <li>
+                IoT Projects
+            </li>
+
+            <li>
+                Emerging Technologies
+            </li>
+
         </ul>
+
         `,
 
 
         "Workshops":
+
         `
+
         <p>
+
         Participate in practical technology
         workshops designed to build real-world skills.
+
         </p>
+
         <br>
-        <strong>Topics may include:</strong>
-        <ul style="margin-left:20px;">
-        <li>Web Development</li>
-        <li>Artificial Intelligence</li>
-        <li>Cybersecurity</li>
-        <li>Programming</li>
-        <li>Cloud Technology</li>
+
+        <strong>
+            Topics:
+        </strong>
+
+        <ul>
+
+            <li>
+                Web Development
+            </li>
+
+            <li>
+                Artificial Intelligence
+            </li>
+
+            <li>
+                Cybersecurity
+            </li>
+
+            <li>
+                Programming
+            </li>
+
+            <li>
+                Cloud Technology
+            </li>
+
         </ul>
+
         `,
 
 
         "Competitions":
+
         `
+
         <p>
-        Compete against talented students and
-        technology enthusiasts.
+
+        Compete against talented students
+        and technology enthusiasts.
+
         </p>
+
         <br>
-        <strong>Competitions:</strong>
-        <ul style="margin-left:20px;">
-        <li>Hackathon</li>
-        <li>Programming Challenge</li>
-        <li>Innovation Pitch</li>
-        <li>Technology Quiz</li>
+
+        <strong>
+            Competitions:
+        </strong>
+
+        <ul>
+
+            <li>
+                Hackathon
+            </li>
+
+            <li>
+                Programming Challenge
+            </li>
+
+            <li>
+                Innovation Pitch
+            </li>
+
+            <li>
+                Technology Quiz
+            </li>
+
         </ul>
+
         `,
 
 
         "Esports":
+
         `
+
         <p>
+
         Experience competitive collegiate esports.
+
         </p>
+
         <br>
-        <strong>Games:</strong>
-        <ul style="margin-left:20px;">
-        <li>Mobile Legends</li>
-        <li>Valorant</li>
-        <li>FIFA</li>
+
+        <strong>
+            Games:
+        </strong>
+
+        <ul>
+
+            <li>
+                Mobile Legends
+            </li>
+
+            <li>
+                Valorant
+            </li>
+
+            <li>
+                FIFA
+            </li>
+
         </ul>
+
         `,
 
 
         "AI & Robotics":
+
         `
+
         <p>
+
         Watch live demonstrations of artificial
         intelligence, autonomous systems and robotics.
+
         </p>
+
         <br>
-        <ul style="margin-left:20px;">
-        <li>AI Demonstrations</li>
-        <li>Robotic Systems</li>
-        <li>Computer Vision</li>
-        <li>Machine Learning</li>
+
+        <ul>
+
+            <li>
+                AI Demonstrations
+            </li>
+
+            <li>
+                Robotic Systems
+            </li>
+
+            <li>
+                Computer Vision
+            </li>
+
+            <li>
+                Machine Learning
+            </li>
+
         </ul>
+
         `,
 
 
         "Networking Hub":
+
         `
+
         <p>
+
         Meet fellow students, developers,
-        entrepreneurs, researchers and technology
-        professionals.
+        entrepreneurs, researchers and
+        technology professionals.
+
         </p>
+
         <br>
-        <strong>Connect with:</strong>
-        <ul style="margin-left:20px;">
-        <li>Students</li>
-        <li>Developers</li>
-        <li>Entrepreneurs</li>
-        <li>Industry Professionals</li>
+
+        <strong>
+            Connect with:
+        </strong>
+
+        <ul>
+
+            <li>
+                Students
+            </li>
+
+            <li>
+                Developers
+            </li>
+
+            <li>
+                Entrepreneurs
+            </li>
+
+            <li>
+                Industry Professionals
+            </li>
+
         </ul>
+
         `
 
     };
@@ -1702,11 +3491,17 @@ function openCategory(category) {
     document.getElementById(
         "categoryContent"
     ).innerHTML =
-        descriptions[category] ||
+
+        descriptions[category]
+
+        ||
+
         "<p>Information coming soon.</p>";
 
 
-    openModal("categoryModal");
+    openModal(
+        "categoryModal"
+    );
 
 }
 
@@ -1718,7 +3513,9 @@ function openCategory(category) {
 function showToast(message) {
 
     const toast =
-        document.getElementById("toast");
+        document.getElementById(
+            "toast"
+        );
 
 
     toast.textContent =
@@ -1729,27 +3526,37 @@ function showToast(message) {
         "block";
 
 
-    setTimeout(() => {
+    setTimeout(
 
-        toast.style.display =
-            "none";
+        () => {
 
-    }, 3000);
+            toast.style.display =
+                "none";
+
+        },
+
+        3000
+
+    );
 
 }
 
 
 /* =========================================================
-   SECURITY / HTML ESCAPING
+   HTML SECURITY
 ========================================================= */
 
 function escapeHTML(text) {
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     div.textContent =
         text;
+
 
     return div.innerHTML;
 
@@ -1757,44 +3564,97 @@ function escapeHTML(text) {
 
 
 /* =========================================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
+   CLOSE MODALS WHEN CLICKING OUTSIDE
 ========================================================= */
 
 window.addEventListener(
+
     "click",
+
     function(event) {
 
-        document.querySelectorAll(
-            ".modal"
-        ).forEach(modal => {
+        document
+            .querySelectorAll(
+                ".modal"
+            )
+            .forEach(
 
-            if (event.target === modal) {
+                modal => {
 
-                modal.style.display =
-                    "none";
+                    if (
+                        event.target ===
+                        modal
+                    ) {
 
-            }
+                        modal.style.display =
+                            "none";
 
-        });
+                    }
+
+                }
+
+            );
 
     }
+
 );
 
 
 /* =========================================================
-   INITIALIZE
+   ESC KEY CLOSES MODALS
 ========================================================= */
 
 document.addEventListener(
+
+    "keydown",
+
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".modal"
+                )
+                .forEach(
+
+                    modal => {
+
+                        modal.style.display =
+                            "none";
+
+                    }
+
+                );
+
+        }
+
+    }
+
+);
+
+
+/* =========================================================
+   START WEBSITE
+========================================================= */
+
+document.addEventListener(
+
     "DOMContentLoaded",
+
     function() {
 
         updateUI();
 
     }
+
 );
 
 </script>
 
+
 </body>
+
 </html>
